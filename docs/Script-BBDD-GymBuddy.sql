@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50),
     email VARCHAR(100) NOT NULL,
+    contrasena VARCHAR(50) NOT NULL,
     estatura FLOAT NOT NULL,
     peso FLOAT NOT NULL
 );
@@ -27,7 +28,8 @@ CREATE TABLE IF NOT EXISTS entrenador (
     usuario_id INT,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50),
-    email VARCHAR(100) NOT NULL
+    email VARCHAR(100) NOT NULL,
+	contrasena VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS entrenamiento (
@@ -50,7 +52,8 @@ CREATE TABLE IF NOT EXISTS admin (
     entrenamiento_id INT,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50),
-    email VARCHAR(100) NOT NULL
+    email VARCHAR(100) NOT NULL,
+	contrasena VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS dificultad (
