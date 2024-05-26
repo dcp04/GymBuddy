@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "GymBuddyApplication",
+            "request": "launch",
+            "mainClass": "gymbuddy.app.GymBuddyApplication",
+            "projectName": "gymbuddy"
+        }
+    ]
+}
