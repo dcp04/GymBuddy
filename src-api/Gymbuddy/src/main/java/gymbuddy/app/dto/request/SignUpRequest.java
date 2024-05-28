@@ -7,6 +7,8 @@ public class SignUpRequest {
     private String nombre; // Nombre del usuario
     private String apellido; // Apellido del usuario
     private String email; // Correo electrónico del usuario
+    private int estatura;
+    private Double peso;
     private String password; // Contraseña del usuario
 
     /**
@@ -55,6 +57,38 @@ public class SignUpRequest {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * Método getter para obtener el correo electrónico del usuario.
+     * @return String El correo electrónico del usuario.
+     */
+    public int getEstatura() {
+        return estatura;
+    }
+
+    /**
+     * Método setter para establecer el correo electrónico del usuario.
+     * @param email El correo electrónico a establecer.
+     */
+    public void setEstatura(int estatura) {
+        this.estatura = estatura;
+    }
+
+    /**
+     * Método getter para obtener el correo electrónico del usuario.
+     * @return String El correo electrónico del usuario.
+     */
+    public Double getPeso() {
+        return peso;
+    }
+
+    /**
+     * Método setter para establecer el correo electrónico del usuario.
+     * @param email El correo electrónico a establecer.
+     */
+    public void setPeso(Double peso) {
+        this.peso = peso;
     }
 
     /**

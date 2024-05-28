@@ -1,0 +1,15 @@
+<button [ngClass]="{
+    'bg-primaryt hover:bg-primaryhover text-white': btnStyle === 'primaryt',
+    'bg-secondaryt hover:bg-secondaryhover text-white': btnStyle === 'secondaryt',
+    'bg-dangert hover:bg-dangerhover text-white': btnStyle === 'dangert',
+    'bg-infot hover:bg-infohover text-white': btnStyle === 'infot',
+    'bg-blurt hover:bg-blurhover text-white': btnStyle === 'blurt',
+    'bg-cleart hover:bg-clearhover text-primaryt': btnStyle === 'cleart',
+    'font-medium': true,
+    'rounded-lg': true,
+    'text-sm': true,
+    'px-6': true,
+    'py-2.5': true,
+    'me-2': true,
+    'mb-2': true
+  }"><ng-content></ng-content></button>
