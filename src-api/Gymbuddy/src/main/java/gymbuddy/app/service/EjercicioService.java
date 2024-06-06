@@ -9,4 +9,5 @@ public interface EjercicioService {
     Ejercicio createEjercicio(Ejercicio ejercicio);
     Ejercicio updateEjercicio(Long id, Ejercicio ejercicio);
     void deleteEjercicio(Long id);
+    List<Ejercicio> getEjerciciosByEntrenamientoId(Long entrenamientoId);
 }

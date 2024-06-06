@@ -9,7 +9,7 @@ import { TokenService } from 'src/app/Services/TokenService/token.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  das: string = '';
+  email: string = '';
 
   constructor(private service: AuthService,
     private tokenService: TokenService,
@@ -33,7 +33,7 @@ export class HeaderComponent {
     }
     const roles = this.tokenService.getRoles();
     this.route.params.subscribe((params) => {
-      this.das = params['das']; // Obtener el DAS del parámetro de la URL
+      this.email = params['email']; // Obtener el DAS del parámetro de la URL
     });
   }
 

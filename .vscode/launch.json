@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GymBuddyApplication<gymbuddy>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "gymbuddy.app.GymBuddyApplication",
+            "projectName": "gymbuddy",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

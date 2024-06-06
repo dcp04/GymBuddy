@@ -58,13 +58,13 @@ public class Usuario implements UserDetails {
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "usuario_rol")
     @Column(name = "RolesUsuario")
-    private Set<Rol> roles = new HashSet<>();
+    private Set<Rol> rol = new HashSet<>();
 
     @Transactional
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        roles.size();
-        return roles.stream()
+        rol.size();
+        return rol.stream()
                 .map(role -> new SimpleGrantedAuthority(role.name()))
                 .collect(Collectors.toList());
     }
@@ -113,11 +113,11 @@ public class Usuario implements UserDetails {
 
 
     public Set<Rol> getRoles() {
-        return roles;
+        return rol;
     }
 
     public void setRoles(Set<Rol> roles) {
-        this.roles = roles;
+        this.rol = roles;
     }
 
     public void setId(Long id) {

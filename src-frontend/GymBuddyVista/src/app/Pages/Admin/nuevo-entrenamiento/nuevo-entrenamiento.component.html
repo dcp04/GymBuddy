@@ -1,0 +1,80 @@
+<app-header></app-header>
+
+<div class="max-w-5xl mx-auto p-8 bg-white rounded-lg shadow-md">
+  <h1 class="text-3xl font-bold mb-6">Crear Nuevo Entrenamiento</h1>
+
+  <form #form="ngForm" (ngSubmit)="createNewsWithFile(form)">
+    <div class="mb-6">
+      <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="entrenamiento.nombre"
+        required
+        minlength="3"
+        maxlength="100"
+        class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"
+        [class.border-red-500]="NombreHasError"
+      />
+      <span *ngIf="NombreHasError" class="text-red-500 text-sm">Nombre inválido.</span>
+    </div>
+
+    <div class="mb-6">
+      <label for="dificultad" class="block text-sm font-medium text-gray-700">Dificultad</label>
+      <select
+        id="dificultad"
+        name="dificultad"
+        [(ngModel)]="entrenamiento.dificultad"
+        required
+        class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"
+        [class.border-red-500]="DificultadHasError"
+      >
+        <option value="" disabled selected>Seleccione una dificultad</option>
+        <option *ngFor="let dificultad of dificultades" [value]="dificultad">{{ dificultad }}</option>
+      </select>
+      <span *ngIf="DificultadHasError" class="text-red-500 text-sm">Debe seleccionar una dificultad.</span>
+    </div>
+
+    <div class="mb-6">
+        <label for="ejercicios" class="block text-sm font-medium text-gray-700">Ejercicios</label>
+        <select
+          id="ejercicios"
+          name="ejercicios"
+          (change)="onEjercicioSelected($event)"
+          class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"
+          multiple
+          [class.border-red-500]="EjerciciosHasError"
+        >
+          <option *ngFor="let ejercicio of ejercicios" [value]="ejercicio.id">{{ ejercicio.nombre }}</option>
+        </select>
+        <span *ngIf="EjerciciosHasError" class="text-red-500 text-sm">Seleccione al menos un ejercicio.</span>
+      </div>
+
+    <div class="mb-6">
+      <label for="fileInput" class="block text-sm font-medium text-gray-700">Imagen</label>
+      <input
+        type="file"
+        id="fileInput"
+        name="fileInput"
+        (change)="onFileSelected($event)"
+        #fileInput
+        class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none"
+      />
+      <span *ngIf="fileError" class="text-red-500 text-sm">{{ fileError }}</span>
+      <img *ngIf="previewUrl" [src]="previewUrl" class="mt-4 h-32 w-32 object-cover rounded-md" />
+    </div>
+
+    <div class="flex justify-end">
+      <button
+        type="submit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        [disabled]="form.invalid || !isFormFullyCompleted()"
+      >
+        Crear Entrenamiento
+      </button>
+    </div>
+  </form>
+</div>
+
+<app-footer></app-footer>

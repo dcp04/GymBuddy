@@ -1,5 +1,7 @@
 package gymbuddy.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,13 +22,16 @@ public class Ejercicio {
     private String nombre;
     private String descripcion;
 
-    @ManyToOne
+     @ManyToOne
     @JoinColumn(name = "entrenamiento_id")
+    @JsonBackReference
     private Entrenamiento entrenamiento;
 
     @ManyToOne
     @JoinColumn(name = "creador_id")
     private Usuario creador;
+
+    private String imagenUrl;
 
     public Long getId() {
         return id;

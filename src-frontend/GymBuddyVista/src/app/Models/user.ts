@@ -6,7 +6,7 @@ export interface User {
     apellidos: string;
     estatura: number;
     peso: number;
-    rol: Role;
+    roles: Role;
 }
 
 export enum Role {

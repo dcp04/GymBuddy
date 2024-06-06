@@ -4,18 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import {
-  HttpClientModule,
-  HTTP_INTERCEPTORS,
-  provideHttpClient,
-} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, provideHttpClient, } from '@angular/common/http';
 import { HeaderComponent } from './Components/Layout/header/header.component';
 import { ButtonsComponent } from './Components/buttons/buttons.component';
 import { FooterComponent } from './Components/Layout/footer/footer.component';
 import { LoginComponent } from './Pages/User/login/login.component';
 import { RegisterComponent } from './Pages/User/register/register.component';
-import { EntrenamientosComponent } from './Pages/Admin/entrenamientos/entrenamientos.component';
+import { ListaEntrenamientosComponent } from './Pages/User/lista-entrenamientos/lista-entrenamientos.component';
+import { ListaEjerciciosComponent } from './Pages/User/lista-ejercicios/lista-ejercicios.component';
+import { HomeComponent } from './Pages/User/home/home.component';
+import { NuevoEntrenamientoComponent } from './Pages/Admin/nuevo-entrenamiento/nuevo-entrenamiento.component';
+import { NuevoEjercicioComponent } from './Pages/Admin/nuevo-ejercicio/nuevo-ejercicio.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,11 @@ import { EntrenamientosComponent } from './Pages/Admin/entrenamientos/entrenamie
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    EntrenamientosComponent,
+    ListaEntrenamientosComponent,
+    ListaEjerciciosComponent,
+    HomeComponent,
+    NuevoEntrenamientoComponent,
+    NuevoEjercicioComponent,
   ],
   imports: [
     BrowserModule,

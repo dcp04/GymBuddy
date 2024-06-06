@@ -1,3 +1,14 @@
+<div class="container w-50 mx-auto pt-5">
+    <div class="mb-5">
+        <label for="image" class="form-label">Imagenes</label>
+        <input type="file" id="image" class="form-control" accept="image/*" (change)="upload($event)">
+    </div>
+</div>
+
+<div *ngIf="url">
+    <img [src]="url" alt="" class="img-fluid img-thumbnail">
+</div>
+
 <router-outlet />
 
 <script src="https://kit.fontawesome.com/472e2d95b2.js" crossorigin="anonymous"></script>

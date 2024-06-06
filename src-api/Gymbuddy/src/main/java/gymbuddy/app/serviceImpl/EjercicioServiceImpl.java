@@ -42,4 +42,9 @@ public class EjercicioServiceImpl implements EjercicioService {
     public void deleteEjercicio(Long id) {
         ejercicioRepository.deleteById(id);
     }
+
+    @Override
+    public List<Ejercicio> getEjerciciosByEntrenamientoId(Long id) {
+        return ejercicioRepository.findAllByEntrenamientoId(id);
+    }
 }

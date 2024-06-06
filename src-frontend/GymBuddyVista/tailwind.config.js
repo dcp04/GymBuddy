@@ -12,12 +12,14 @@ module.exports = {
         infot: '#ececed',
         blurt: '#77929F',
         cleart: '#ffffff',
+        blackt: '#000000',
         primaryhover: '#C91E28',
         secondaryhover: '#E55737',
         dangerhover: '#E01414',
         infohover: '#a5a5a6',
         blurhover: '#647C87',
-        clearhover: '#D6D6D6'
+        clearhover: '#D6D6D6',
+        blackhover: '#000000',
       }
     },
   },

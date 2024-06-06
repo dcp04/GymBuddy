@@ -2,10 +2,13 @@ package gymbuddy.app.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,7 +36,10 @@ public class Entrenamiento {
     private Usuario creador;
 
     @OneToMany(mappedBy = "entrenamiento", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Ejercicio> ejercicios;
+
+    private String imagenUrl;
 
     public Long getId() {
         return id;

@@ -1,0 +1,9 @@
+<app-header type="admin"></app-header>
+
+<div class="max-w-5xl mx-auto p-8 bg-white rounded-lg shadow-md" *ngIf="ejercicio">
+  <h1 class="text-3xl font-bold mb-4">{{ ejercicio.nombre }}</h1>
+  <h2 class="text-xl font-semibold mb-2">Descripción</h2>
+  <span class="text-gray-500">{{ ejercicio.descripcion }}</span>
+</div>
+
+<app-footer></app-footer>

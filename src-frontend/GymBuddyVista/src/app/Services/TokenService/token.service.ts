@@ -12,24 +12,24 @@ export class TokenService {
   }
 
   //receives token and an array of roles
-  setUserDetails(token: string, roles: string[]): void {
+  setUserDetails(token: string, rol: string[]): void {
     //and store it in a session
     sessionStorage.setItem('token', token);
-    sessionStorage.setItem('roles', JSON.stringify(roles));
+    sessionStorage.setItem('rol', JSON.stringify(rol));
   }
 
   //it gets all roles stored in session
   getRoles(): string[] | null {
     //gets roles
-    const roles = sessionStorage.getItem('roles');
+    const rol = sessionStorage.getItem('rol');
     //parse and return them as an array
-    return roles ? JSON.parse(roles) : null;
+    return rol ? JSON.parse(rol) : null;
   }
 
   //deletes token and roles
   removeUserDetails(): void {
     sessionStorage.removeItem('token');
-    sessionStorage.removeItem('roles');
+    sessionStorage.removeItem('rol');
   }
 
   decodeToken(token: string): JwtPayload | null {

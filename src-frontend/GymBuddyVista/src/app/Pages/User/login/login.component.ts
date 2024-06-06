@@ -43,9 +43,9 @@ export class LoginComponent {
         .subscribe({
           next: (res) => {
             console.log(res)
-            this.tokenservice.setUserDetails(res.token, res.roles)
+            this.tokenservice.setUserDetails(res.token, res.rol)
             this.error = ''
-            this.router.navigate([''])
+            this.router.navigate(['/'])
           },
           error: (err) => {
             console.log(err)
