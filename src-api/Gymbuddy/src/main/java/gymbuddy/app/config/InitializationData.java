@@ -1,14 +1,10 @@
 package gymbuddy.app.config;
 
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import com.github.javafaker.Faker;
 
 import gymbuddy.app.entities.Rol;
 import gymbuddy.app.entities.Usuario;
@@ -25,8 +21,6 @@ public class InitializationData implements CommandLineRunner {
     @Autowired
     private UserRepository usuarioRepository;
 
-    private final boolean borrarMangas = false; // Variable para controlar el borrado de datos
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -39,16 +33,12 @@ public class InitializationData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        // if (borrarMangas) {
-        // mangaRepository.deleteAll(); // Borra todos los mangas existentes
-        // }
-
         try {
 
             // Usuario 3 - Rol ENTRENADOR
             Usuario usuario3 = new Usuario();
             usuario3.setNombre("Javier");
-            usuario3.setApellido("Pintado");
+            usuario3.setApellidos("Pintado");
             usuario3.setEmail("javier.pintado@gmail.com");
             usuario3.setPassword(passwordEncoder.encode("javier1234"));
             usuario3.setEstatura(177);
@@ -59,7 +49,7 @@ public class InitializationData implements CommandLineRunner {
             // Usuario 2 - Rol ADMIN
             Usuario usuario2 = new Usuario();
             usuario2.setNombre("David");
-            usuario2.setApellido("Castro Portero");
+            usuario2.setApellidos("Castro Portero");
             usuario2.setEmail("david.castro@gmail.com");
             usuario2.setPassword(passwordEncoder.encode("david1234"));
             usuario2.setEstatura(175);
@@ -70,7 +60,7 @@ public class InitializationData implements CommandLineRunner {
             // Usuario 1 - Rol USER
             Usuario usuario1 = new Usuario();
             usuario1.setNombre("Abel");
-            usuario1.setApellido("Garcia Sanchez");
+            usuario1.setApellidos("Garcia Sanchez");
             usuario1.setEmail("abel.garcia@gmail.com");
             usuario1.setPassword(passwordEncoder.encode("abel1234"));
             usuario1.setEstatura(183);
@@ -81,7 +71,5 @@ public class InitializationData implements CommandLineRunner {
         } catch (Exception e) {
             // Manejar cualquier error que pueda ocurrir al guardar los usuarios
         }
-        Faker faker = new Faker(new Locale("es"));
-
     }
 }

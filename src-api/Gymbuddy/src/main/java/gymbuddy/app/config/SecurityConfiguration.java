@@ -53,6 +53,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.DELETE, "/media/upload/**").hasAnyAuthority(Rol.ROL_ADMIN.toString(), Rol.ROL_ENTRENADOR.toString())
                 .requestMatchers(HttpMethod.GET, "/media/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/usuarios/**").hasAuthority(Rol.ROL_ADMIN.toString())
+                .requestMatchers("/api/usuarios/**").hasRole("ADMIN") // Ajusta el rol según sea necesario
                 .anyRequest().authenticated())
             .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
             .cors(withDefaults -> {})

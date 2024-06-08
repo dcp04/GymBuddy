@@ -98,8 +98,8 @@ public class Usuario implements UserDetails {
         this.nombre = nombre;
     }
 
-    public void setApellido(String apellido) {
-        this.apellidos = apellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public void setEmail(String email) {
@@ -132,7 +132,7 @@ public class Usuario implements UserDetails {
         return nombre;
     }
 
-    public String getApellido() {
+    public String getApellidos() {
         return apellidos;
     }
 

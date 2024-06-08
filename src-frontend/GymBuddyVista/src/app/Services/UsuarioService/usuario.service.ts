@@ -8,6 +8,7 @@ import { User } from 'src/app/Models/user';
 })
 export class UsuarioService {
   private baseUrl = 'http://localhost:8080/api/usuarios';
+  private emailUrl = 'http://localhost:8080/api/usuarios/email';
   constructor(private http: HttpClient) {}
 
   getUsuarios(): Observable<User[]> {
@@ -18,15 +19,19 @@ export class UsuarioService {
     return this.http.get<User>(`${this.baseUrl}/${id}`);
   }
 
+  getUsuarioByEmail(email: string): Observable<User> {
+    return this.http.get<User>(`${this.emailUrl}/${email}`);
+  }
+
   createUsuario(usuario: User): Observable<User> {
     return this.http.post<User>(this.baseUrl, usuario);
   }
 
-  updateUsuario(usuario: User, id: number): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}${id}`, usuario);
+  updateUsuario(id: number, usuario: User): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/${id}`, usuario);
   }
 
   deleteUsuario(id: number): Observable<void> {
-    return this.http.delete<any>(`${this.baseUrl}${id}`);
+    return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }
 }

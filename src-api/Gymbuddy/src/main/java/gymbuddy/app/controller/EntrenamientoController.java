@@ -85,7 +85,7 @@ public class EntrenamientoController {
 
     @PostMapping("/media/upload/entrenamientos/{id}")
     public Map<String, String> uploadFile(@RequestParam("file") MultipartFile multipartFile,
-            @RequestParam("id") Long id) {
+            @PathVariable Long id) {
         String path = storageService.store(multipartFile);
         String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
         String url = ServletUriComponentsBuilder

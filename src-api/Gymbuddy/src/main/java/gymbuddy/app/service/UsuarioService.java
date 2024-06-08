@@ -9,4 +9,5 @@ public interface UsuarioService {
     Usuario getUsuarioById(Long id);
     Usuario updateUsuario(Long id, Usuario usuario);
     void deleteUsuario(Long id);
+    Usuario getUsuarioByEmail(String email);
 }

@@ -24,7 +24,7 @@
               stroke="currentColor"
               stroke-width="2"
               viewBox="0 0 24 24"
-              [routerLink]="'/users'"
+              [routerLink]="'/'"
             >
               <path d="M15 19l-7-7 7-7"></path>
             </svg>
@@ -276,9 +276,17 @@
                 </button>
               </div>
 
-              <p class="mt-6 mt-2 text-xs text-gray-600 text-center">
-                I agree to abide by GymBuddy and its Privacy Policy.
-              </p>
+              <div class="privacidad">
+                <span class="mt-6 mt-2 text-xs text-gray-600 text-center">
+                  Estoy de acuerdo con la política de <br> Privacidad de GymBuddy
+                </span>
+                <a
+                  class="mt-6 mt-2 text-xs text-gray-600 text-center"
+                  [routerLink]="'/login'"
+                >
+                  ¿Ya tienes una cuenta?
+                </a>
+              </div>
             </div>
           </div>
         </div>

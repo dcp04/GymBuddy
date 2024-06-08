@@ -55,7 +55,7 @@ export class RegisterComponent {
         password: this.FormUser.get('password')?.value,
         estatura: this.FormUser.get('estatura')?.value,
         peso: this.FormUser.get('peso')?.value,
-        roles: this.FormUser.get('rol')?.value === 'Admin' ? Role.ADMIN : Role.USER,
+        roles: this.FormUser.get('roles')?.value === 'Admin' ? Role.ADMIN : Role.USER,
       };
       
       this.authService.signup(userData)
