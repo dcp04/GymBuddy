@@ -19,6 +19,7 @@ export class HeaderComponent {
 
 
   type = ''
+  login: boolean = false;
   isMenuOpen: boolean = false;
 
   toggleMenu() {
@@ -26,10 +27,14 @@ export class HeaderComponent {
   }
   logout() {
     this.service.logout()
+    window.location.reload();
   }
   ngOnInit() {
     if (sessionStorage.getItem('roles') === '["ROL_ADMIN"]') {
       this.type = 'admin'
+    }
+    if (sessionStorage.getItem('token')) {
+      this.login = true;
     }
     const roles = this.tokenService.getRoles();
     this.route.params.subscribe((params) => {

@@ -27,7 +27,7 @@ export class NuevoEntrenamientoComponent {
   };
   ejercicios: Ejercicios[] = [];
   dificultades = Object.values(Dificultad);
-  id: number = 0;
+  email: string = '';
   tokenData: any = null;
 
   selectedFileName: string = 'No file selected';
@@ -114,7 +114,7 @@ export class NuevoEntrenamientoComponent {
     const token = this.tokenService.getToken();
     if (token) {
       this.tokenData = this.tokenService.decodeToken(token);
-      this.id = this.tokenData ? this.tokenData.sub : null;
+      this.email = this.tokenData ? this.tokenData.sub : null;
     }
     this.getUser();
     this.getEjercicios();
@@ -125,7 +125,7 @@ export class NuevoEntrenamientoComponent {
    */
   getUser() {
     this.a_router.params.subscribe(() => {});
-    this.usuarioService.getUsuarioById(this.id).subscribe({
+    this.usuarioService.getUsuarioByEmail(this.email).subscribe({
       next: (res) => {
         this.entrenamiento.creador = res;
       },

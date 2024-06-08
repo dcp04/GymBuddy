@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UsuarioResponse> getAllUsers() {
         List<UsuarioResponse> allUsers = userRepository.findAll().stream()
-                .map(usuario -> new UsuarioResponse(usuario.getNombre(), usuario.getApellido(), usuario.getEmail(),
+                .map(usuario -> new UsuarioResponse(usuario.getNombre(), usuario.getApellidos(), usuario.getEmail(),
                         usuario.getRoles().toString()))
                 .collect(Collectors.toList());
         return allUsers;

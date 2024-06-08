@@ -34,7 +34,7 @@ public class AuthorizationController {
     public ResponseEntity<UsuarioResponse> miPerfil(@AuthenticationPrincipal Usuario usuario) {
         logger.info("## AuthorizationController :: miPerfil");
 
-        UsuarioResponse userResponse = new UsuarioResponse(usuario.getNombre(), usuario.getApellido(),
+        UsuarioResponse userResponse = new UsuarioResponse(usuario.getNombre(), usuario.getApellidos(),
                 usuario.getEmail(), usuario.getRoles().toString());
 
         return ResponseEntity.ok(userResponse);

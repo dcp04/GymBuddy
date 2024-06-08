@@ -41,18 +41,21 @@
         class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-white md:dark:bg-white"
       >
         <li>
-          <app-buttons class="text-white" [routerLink]="'/entrenamientos'"
-            >Entrenamientos</app-buttons
+          <app-buttons
+            *ngIf="type"
+            class="text-white"
+            [routerLink]="'/usuarios'"
+            >Usuarios</app-buttons
           >
         </li>
         <li>
-          <app-buttons class="text-white" [routerLink]="'/ejercicios'"
-            >Ejercicios</app-buttons
-          >
-        </li>
-        <li>
-          <app-buttons class="text-white" (click)="logout()"
+          <app-buttons *ngIf="login" btnStyle="blurt" class="text-white" (click)="logout()"
             >Logout</app-buttons
+          >
+        </li>
+        <li>
+          <app-buttons *ngIf="!login" btnStyle="blurt" class="text-white" [routerLink]="'/login'"
+            >Login</app-buttons
           >
         </li>
       </ul>

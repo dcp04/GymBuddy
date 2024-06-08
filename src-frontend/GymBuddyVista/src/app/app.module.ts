@@ -15,6 +15,8 @@ import { ListaEjerciciosComponent } from './Pages/User/lista-ejercicios/lista-ej
 import { HomeComponent } from './Pages/User/home/home.component';
 import { NuevoEntrenamientoComponent } from './Pages/Admin/nuevo-entrenamiento/nuevo-entrenamiento.component';
 import { NuevoEjercicioComponent } from './Pages/Admin/nuevo-ejercicio/nuevo-ejercicio.component';
+import { ListaUsuarioComponent } from './Pages/Admin/lista-usuario/lista-usuario.component';
+import { AuthInterceptor } from './Interceptors/AuthInterceptor';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { NuevoEjercicioComponent } from './Pages/Admin/nuevo-ejercicio/nuevo-eje
     HomeComponent,
     NuevoEntrenamientoComponent,
     NuevoEjercicioComponent,
+    ListaUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { NuevoEjercicioComponent } from './Pages/Admin/nuevo-ejercicio/nuevo-eje
   ],
   providers: [
     provideHttpClient(),
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

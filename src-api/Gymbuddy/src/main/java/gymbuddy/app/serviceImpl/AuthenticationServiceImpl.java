@@ -1,8 +1,13 @@
 package gymbuddy.app.serviceImpl;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -57,7 +62,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         Usuario user = new Usuario();
         user.setNombre(request.getNombre());
-        user.setApellido(request.getApellido());
+        user.setApellidos(request.getApellido());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.getRoles().add(Rol.ROL_USER);
@@ -75,12 +80,22 @@ public class AuthenticationServiceImpl implements AuthenticationService {
      */
     @Override
     public JwtAuthenticationResponse signin(SigninRequest request) {
-        Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         Usuario user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid das or password."));
+
         String jwt = jwtService.generateToken(user);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        Set<String> roles = user.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toSet());
+
+        return JwtAuthenticationResponse.builder()
+                .token(jwt)
+                .roles(roles)
+                .build();
     }
 }
