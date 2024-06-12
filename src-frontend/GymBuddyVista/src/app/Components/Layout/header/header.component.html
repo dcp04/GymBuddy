@@ -11,7 +11,7 @@
     <button
       (click)="toggleMenu()"
       type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
       aria-controls="navbar-default"
       aria-expanded="false"
     >
@@ -33,12 +33,12 @@
       </svg>
     </button>
     <div
-      [ngClass]="{ hidden: isMenuOpen, block: !isMenuOpen }"
+      [ngClass]="{ hidden: !isMenuOpen, block: isMenuOpen }"
       class="w-full md:block md:w-auto"
       id="navbar-default"
     >
       <ul
-        class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-white md:dark:bg-white"
+        class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white"
       >
         <li>
           <app-buttons
@@ -62,36 +62,3 @@
     </div>
   </div>
 </nav>
-
-<!-- <nav class="border-b-2 border-black bg-white mx-8 mt-8">
-  <div class="max-w-screen-xl flex flex-wrap items-center pt-5 ps-5">
-    <a
-      routerLink="/"
-      class="flex items-center space-x-3 rtl:space-x-reverse mb-5"
-    >
-      <img
-        src="../../../../assets/private-files/LogoGymBuddyColor.svg"
-        width="80px"
-        alt="Logo"
-        class="ms-2"
-      />
-    </a>
-    <ul
-      class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-white md:dark:bg-white"
-    >
-      <li>
-        <app-buttons class="text-white" [routerLink]="'/entrenamientos'"
-          >Entrenamientos</app-buttons
-        >
-      </li>
-      <li>
-        <app-buttons class="text-white" [routerLink]="'/ejercicios'"
-          >Ejercicios</app-buttons
-        >
-      </li>
-      <li>
-        <app-buttons class="text-white" (click)="logout()">Logout</app-buttons>
-      </li>
-    </ul>
-  </div>
-</nav> -->

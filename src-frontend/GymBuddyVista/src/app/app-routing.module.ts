@@ -11,7 +11,6 @@ import { ListaUsuarioComponent } from './Pages/Admin/lista-usuario/lista-usuario
 import { AuthGuard } from './Guards/auth.guard';
 import { RoleGuard } from './Guards/role.guard';
 
-
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
@@ -20,7 +19,7 @@ const routes: Routes = [
   {path: 'ejercicios/:id', component: ListaEjerciciosComponent},
   {path: 'nuevo_entrenamiento', component: NuevoEntrenamientoComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRoles: ['ROL_ADMIN', 'ROL_ENTRENADOR'] }},
   {path: 'nuevo_ejercicio', component: NuevoEjercicioComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRoles: ['ROL_ADMIN', 'ROL_ENTRENADOR'] }},
-  {path: 'usuarios', component: ListaUsuarioComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRoles: ['ROL_ADMIN'] }}
+  {path: 'usuarios', component: ListaUsuarioComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRoles: ['ROL_ADMIN'] }},
 ]
 
 @NgModule({

@@ -1,9 +1,13 @@
 package gymbuddy.app.controller;
 
+import gymbuddy.app.entities.Dificultad;
 import gymbuddy.app.entities.Ejercicio;
+import gymbuddy.app.entities.Entrenamiento;
+import gymbuddy.app.entities.Usuario;
 import gymbuddy.app.repository.EjercicioRepository;
 import gymbuddy.app.service.EjercicioService;
 import gymbuddy.app.service.StorageService;
+import gymbuddy.app.service.UsuarioService;
 import gymbuddy.app.dto.EjercicioDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
@@ -17,7 +21,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +29,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping
-@CrossOrigin(origins = "http://localhost:4200/")
 @AllArgsConstructor
 public class EjercicioController {
 
@@ -41,8 +43,10 @@ public class EjercicioController {
 
     @Autowired
     private final HttpServletRequest request;
-    
-    @CrossOrigin(origins = "http://localhost:4200")
+
+    @Autowired
+    private UsuarioService usuarioService;
+
     @GetMapping("/api/ejercicios")
     public List<EjercicioDTO> getAllEjercicios() {
         return ejercicioRepository.findAll().stream()
@@ -66,10 +70,34 @@ public class EjercicioController {
         return dto;
     }
 
-    @PostMapping("/api/ejercicios")
-    public ResponseEntity<Ejercicio> createEjercicio(@RequestBody Ejercicio ejercicio) {
-        Ejercicio createdEjercicio = ejercicioService.createEjercicio(ejercicio);
-        return new ResponseEntity<>(createdEjercicio, HttpStatus.CREATED);
+    @PostMapping(path = "/api/ejercicios", consumes = "multipart/form-data")
+    public ResponseEntity<Ejercicio> crearEjercicio(
+            @RequestParam("nombre") String nombre,
+            @RequestParam("descripcion") String descripcion,
+            @RequestParam("creador") Long creadorId,
+            @RequestParam("imagenUrl") MultipartFile imagenUrl) {
+
+        String imageUrl = null;
+        if (!imagenUrl.isEmpty()) {
+            String path = storageService.store(imagenUrl);
+            String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
+            imageUrl = ServletUriComponentsBuilder
+                    .fromHttpUrl(host)
+                    .path("/media/ejercicios/")
+                    .path(path)
+                    .toUriString();
+        }
+
+        Usuario creador = usuarioService.getUsuarioById(creadorId);
+
+        Ejercicio nuevoEjercicio = new Ejercicio();
+        nuevoEjercicio.setNombre(nombre);
+        nuevoEjercicio.setDescripcion(descripcion);
+        nuevoEjercicio.setCreador(creador);
+        nuevoEjercicio.setImagenUrl(imageUrl);
+
+        Ejercicio ejercicioCreado = ejercicioService.createEjercicio(nuevoEjercicio);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ejercicioCreado);
     }
 
     @PutMapping("/api/ejercicios/{id}")
@@ -93,13 +121,14 @@ public class EjercicioController {
         String path = storageService.store(multipartFile);
         String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
         String url = ServletUriComponentsBuilder
-            .fromHttpUrl(host)
-            .path("/media/ejercicios/")
-            .path(path)
-            .toUriString();
+                .fromHttpUrl(host)
+                .path("/media/ejercicios/")
+                .path(path)
+                .toUriString();
 
         // Fetch the Ejercicio entity
-        Ejercicio ejercicio = ejercicioRepository.findById(id).orElseThrow(() -> new RuntimeException("Ejercicio not found"));
+        Ejercicio ejercicio = ejercicioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ejercicio not found"));
 
         // Update the imagenUrl attribute
         ejercicio.setImagenUrl(url);
@@ -115,8 +144,8 @@ public class EjercicioController {
         Resource file = storageService.loadAsResource(filename);
         String contentType = Files.probeContentType(file.getFile().toPath());
         return ResponseEntity
-            .ok()
-            .header(HttpHeaders.CONTENT_TYPE, contentType)
-            .body(file);
+                .ok()
+                .header(HttpHeaders.CONTENT_TYPE, contentType)
+                .body(file);
     }
 }

@@ -5,7 +5,7 @@ package gymbuddy.app.dto.request;
  */
 public class SignUpRequest {
     private String nombre; // Nombre del usuario
-    private String apellido; // Apellido del usuario
+    private String apellidos; // Apellido del usuario
     private String email; // Correo electrónico del usuario
     private int estatura;
     private Double peso;
@@ -28,19 +28,19 @@ public class SignUpRequest {
     }
 
     /**
-     * Método getter para obtener el apellido del usuario.
-     * @return String El apellido del usuario.
+     * Método getter para obtener el apellidos del usuario.
+     * @return String El apellidos del usuario.
      */
     public String getApellido() {
-        return apellido;
+        return apellidos;
     }
 
     /**
-     * Método setter para establecer el apellido del usuario.
-     * @param lastName El apellido a establecer.
+     * Método setter para establecer el apellidos del usuario.
+     * @param lastName El apellidos a establecer.
      */
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellido(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     /**

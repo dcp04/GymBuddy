@@ -47,4 +47,9 @@ public class EjercicioServiceImpl implements EjercicioService {
     public List<Ejercicio> getEjerciciosByEntrenamientoId(Long id) {
         return ejercicioRepository.findAllByEntrenamientoId(id);
     }
+
+    @Override
+    public List<Ejercicio> getAllEjerciciosById(Iterable<Long> id) {
+        return ejercicioRepository.findAllById(id);
+    }
 }

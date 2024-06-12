@@ -11,9 +11,9 @@ public class UsuarioResponse {
     private String nombre;
 
     /**
-     * El apellido del usuario.
+     * El apellidos del usuario.
      */
-    private String apellido;
+    private String apellidos;
 
     /**
      * El correo electrónico del usuario.
@@ -23,21 +23,21 @@ public class UsuarioResponse {
     /**
      * El rol del usuario.
      */
-    private String rol;
+    private String roles;
 
     /**
      * Construye un objeto UsuarioResponse con la información proporcionada.
      *
      * @param firstName El nombre del usuario.
-     * @param lastName  El apellido del usuario.
+     * @param lastName  El apellidos del usuario.
      * @param email     El correo electrónico del usuario.
      * @param rol       El rol del usuario.
      */
-    public UsuarioResponse(String nombre, String apellido, String email, String rol) {
+    public UsuarioResponse(String nombre, String apellidos, String email, String roles) {
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.apellidos = apellidos;
         this.email = email;
-        this.rol = rol;
+        this.roles = roles;
     }
 
     /**
@@ -59,21 +59,21 @@ public class UsuarioResponse {
     }
 
     /**
-     * Obtiene el apellido del usuario.
+     * Obtiene el apellidos del usuario.
      *
-     * @return El apellido del usuario.
+     * @return El apellidos del usuario.
      */
     public String getApellido() {
-        return apellido;
+        return apellidos;
     }
 
     /**
-     * Establece el apellido del usuario.
+     * Establece el apellidos del usuario.
      *
-     * @param lastName El apellido del usuario.
+     * @param lastName El apellidos del usuario.
      */
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellido(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     /**
@@ -100,7 +100,7 @@ public class UsuarioResponse {
      * @return El rol del usuario.
      */
     public String getRol() {
-        return rol;
+        return roles;
     }
 
     /**
@@ -108,7 +108,7 @@ public class UsuarioResponse {
      *
      * @param rol El rol del usuario.
      */
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRol(String roles) {
+        this.roles = roles;
     }
 }

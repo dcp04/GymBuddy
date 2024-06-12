@@ -5,7 +5,7 @@ export interface Ejercicios{
     id: number;
     nombre: string;
     descripcion: string;
-    entrenamiento: Entrenamientos;
+    entrenamiento: Entrenamientos[];
     creador: User | null;
     imagenUrl: string | null;
 }

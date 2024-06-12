@@ -53,10 +53,11 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.DELETE, "/media/upload/**").hasAnyAuthority(Rol.ROL_ADMIN.toString(), Rol.ROL_ENTRENADOR.toString())
                 .requestMatchers(HttpMethod.GET, "/media/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/usuarios/**").hasAuthority(Rol.ROL_ADMIN.toString())
-                .requestMatchers("/api/usuarios/**").hasRole("ADMIN") // Ajusta el rol según sea necesario
+                .requestMatchers(HttpMethod.PUT, "/api/usuarios/**").hasAuthority(Rol.ROL_ADMIN.toString())
+                .requestMatchers(HttpMethod.DELETE, "/api/usuarios/**").hasAuthority(Rol.ROL_ADMIN.toString())
+                .requestMatchers("/api/usuarios/**").hasRole("ADMIN")
                 .anyRequest().authenticated())
             .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-            .cors(withDefaults -> {})
             .authenticationProvider(authenticationProvider())
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
@@ -78,17 +79,5 @@ public class SecurityConfiguration {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
-    }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:4200");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("/**", config);
-        return source;
     }
 }

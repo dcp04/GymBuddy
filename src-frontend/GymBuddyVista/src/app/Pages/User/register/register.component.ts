@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { EmailValidator, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Role, User } from 'src/app/Models/user';
+import { Rol, User } from 'src/app/Models/user';
 import { AuthService } from 'src/app/Services/AuthService/auth.service';
 
 @Component({
@@ -55,7 +55,7 @@ export class RegisterComponent {
         password: this.FormUser.get('password')?.value,
         estatura: this.FormUser.get('estatura')?.value,
         peso: this.FormUser.get('peso')?.value,
-        roles: this.FormUser.get('roles')?.value === 'Admin' ? Role.ADMIN : Role.USER,
+        roles: this.FormUser.get('roles')?.value,
       };
       
       this.authService.signup(userData)

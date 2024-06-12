@@ -11,7 +11,6 @@ C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbu
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\service\JwtService.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\controller\AuthorizationController.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\error\exception\UserNotFoundException.java
-C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\controller\MediaController.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\serviceImpl\UsuarioServiceImpl.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\dto\response\user\JwtAuthenticationResponse.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\repository\EntrenamientoRepository.java
@@ -38,6 +37,7 @@ C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbu
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\serviceImpl\EjercicioServiceImpl.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\serviceImpl\JwtServiceImpl.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\config\JwtAuthenticationFilter.java
+C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\dto\EntrenamientoDTO.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\error\GlobalExceptionHandler.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\dto\request\SigninRequest.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\config\SecurityConfiguration.java

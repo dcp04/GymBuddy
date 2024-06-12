@@ -9,7 +9,19 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.transaction.Transactional;
 
 /**
@@ -58,38 +70,44 @@ public class Usuario implements UserDetails {
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "usuario_rol")
     @Column(name = "RolesUsuario")
-    private Set<Rol> rol = new HashSet<>();
+    private Set<Rol> roles = new HashSet<>();
 
     @Transactional
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        rol.size();
-        return rol.stream()
+        roles.size();
+        return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.name()))
                 .collect(Collectors.toList());
     }
 
     @Override
+    @JsonIgnore
     public String getUsername() {
         return email;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return true;
     }
@@ -113,11 +131,11 @@ public class Usuario implements UserDetails {
 
 
     public Set<Rol> getRoles() {
-        return rol;
+        return roles;
     }
 
     public void setRoles(Set<Rol> roles) {
-        this.rol = roles;
+        this.roles = roles;
     }
 
     public void setId(Long id) {
