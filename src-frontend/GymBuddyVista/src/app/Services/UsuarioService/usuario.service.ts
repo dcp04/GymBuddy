@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/Models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
-  private baseUrl = 'http://localhost:8080/api/usuarios';
-  private emailUrl = 'http://localhost:8080/api/usuarios/email';
+  private baseUrl = environment.apiUrl+'/usuarios';
+  private emailUrl = environment.apiUrl+'/usuarios/email';
   constructor(private http: HttpClient) {}
 
   getUsuarios(): Observable<User[]> {
@@ -30,7 +31,6 @@ export class UsuarioService {
   updateUsuario(id: number, usuario: User): Observable<User> {
     return this.http.put<User>(`${this.baseUrl}/${id}`, usuario);
   }
-
   deleteUsuario(id: number): Observable<void> {
     return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }

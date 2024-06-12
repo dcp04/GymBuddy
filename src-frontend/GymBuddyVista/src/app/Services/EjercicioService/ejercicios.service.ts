@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ejercicios } from 'src/app/Models/Ejercicios';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EjerciciosService {
-  private baseUrl = 'http://localhost:8080/api/ejercicios'; // Añade el protocolo http://
+  private baseUrl = environment.apiUrl+'/ejercicios'; 
   constructor(private http: HttpClient) {}
 
   getEjercicios(): Observable<Ejercicios[]> {
@@ -18,7 +19,7 @@ export class EjerciciosService {
     return this.http.get<Ejercicios>(`${this.baseUrl}/${id}`);
   }
 
-  createEjercicio(entrenamiento: Ejercicios): Observable<Ejercicios> {
+  createEjercicio(entrenamiento: FormData): Observable<Ejercicios> {
     return this.http.post<Ejercicios>(this.baseUrl, entrenamiento);
   }
 

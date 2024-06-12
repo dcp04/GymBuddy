@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Ejercicios } from 'src/app/Models/Ejercicios';
 import { EjerciciosService } from 'src/app/Services/EjercicioService/ejercicios.service';
 
@@ -11,13 +11,17 @@ import { EjerciciosService } from 'src/app/Services/EjercicioService/ejercicios.
 export class ListaEjerciciosComponent {
   ejercicio: Ejercicios | undefined;
   id: number = 0;
+  ejercicioDelete: number | null = null;
+  isMenuDeleteOpen: boolean = false;
+
   constructor(
     private ejercicioService: EjerciciosService,
-    private route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private route: Router
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
+    this._route.params.subscribe((params) => {
       this.id = params['id'];
       this.showEjercicios(this.id);
     });
@@ -33,5 +37,19 @@ export class ListaEjerciciosComponent {
         console.log(err);
       },
     });
+  }
+
+  modalDelete(id: number | null): void {
+    this.ejercicioDelete = id;
+    this.isMenuDeleteOpen = !this.isMenuDeleteOpen;
+  }
+
+  deleteEjercicio(id: number | null): void {
+    if (id !== null) {
+      this.ejercicioService.deleteEjercicio(id).subscribe(() => {
+        this.route.navigate(["/"]);
+        this.isMenuDeleteOpen = false;
+      });
+    }
   }
 }

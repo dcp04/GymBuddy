@@ -4,14 +4,15 @@ import { TokenService } from '../TokenService/token.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8080/api/auth/signin';
-  private apiUrlSignup = 'http://localhost:8080/api/auth/signup';
+  private apiUrl = environment.apiUrl+'/auth/signin';
+  private apiUrlSignup = environment.apiUrl+'/auth/signup';
 
   constructor(private http: HttpClient, private tokenService: TokenService, private router: Router) { }
 

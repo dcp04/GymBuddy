@@ -11,6 +11,6 @@ import gymbuddy.app.entities.Ejercicio;
 @Repository
 public interface EjercicioRepository extends JpaRepository<Ejercicio, Long> {
 
-    @Query("SELECT e FROM Ejercicio e WHERE e.entrenamiento.id = :id")
+    @Query("SELECT e FROM Ejercicio e JOIN e.entrenamiento et WHERE et.id = :id")
     List<Ejercicio> findAllByEntrenamientoId(@Param("id") Long id);
 }

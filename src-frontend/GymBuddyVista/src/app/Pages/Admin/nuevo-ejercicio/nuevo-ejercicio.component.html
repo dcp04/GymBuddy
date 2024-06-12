@@ -1,1 +1,102 @@
-<p>nuevo-ejercicio works!</p>
+<app-header></app-header>
+
+<div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+  <div class="container max-w-screen-lg mx-auto">
+    <div>
+      <h1 class="font-semibold text-xl mb-4">Crear Nuevo Ejercicio</h1>
+      <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+          <div class="lg:col-span-2">
+            <form
+              class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
+              [formGroup]="ejercicioForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <div class="md:col-span-5 mt-4">
+                <label for="nombre">Nombre:</label>
+                <input
+                  type="text"
+                  formControlName="nombre"
+                  id="nombre"
+                  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  placeholder="Escribe el nombre del ejercicio."
+                />
+              </div>
+
+              <div class="md:col-span-5 mt-4">
+                <label
+                  for="descripcion"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Descripción:
+                </label>
+                <textarea
+                  id="descripcion"
+                  rows="4"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                  formControlName="descripcion"
+                  placeholder="Escribe la descripción del ejercicio."
+                ></textarea>
+              </div>
+
+              <div class="md:col-span-3 mt-4">
+                <label
+                  for="creador"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Creador:</label
+                >
+                <select
+                  id="creador"
+                  formControlName="creador"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  placeholder="Escoge al creador del ejercicio."
+                >
+                  <option *ngFor="let usuario of usuarios" [value]="usuario.id">
+                    {{ usuario.nombre }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="md:col-span-3 mt-4">
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  for="imagenUrl"
+                  >URL de la Imagen:</label
+                >
+                <input
+                  class="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 focus:outline-none"
+                  aria-describedby="imagenUrl"
+                  id="imagenUrl"
+                  type="file"
+                  placeholder="Selecciona una imagen del ejercicio"
+                  (change)="onFileSelected($event)"
+                />
+              </div>
+
+              <div class="md:col-span-5 text-right mt-4">
+                <div class="inline-flex items-end">
+                  <app-buttons
+                    btnStyle="primaryt"
+                    class="text-white"
+                    type="submit"
+                    disabled="ejercicioForm.invalid"
+                  >
+                    Enviar
+                  </app-buttons>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="flex-1 bg-secuncaryt text-center hidden lg:flex ms-4">
+            <div
+              class="w-full bg-cover bg-center bg-no-repeat"
+              style="
+                background-image: url('../../../../assets/private-files/ImagenNuevoEjercicio.jpeg');
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

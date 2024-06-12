@@ -1,4 +1,10 @@
-export interface User {
+export enum Rol {
+    ROL_USER = 'ROL_USER',
+    ROL_ADMIN = 'ROL_ADMIN',
+    ROL_ENTRENADOR = 'ROL_ENTRENADOR',
+  }
+  
+  export interface User {
     id: number;
     email: string;
     password: string;
@@ -6,13 +12,5 @@ export interface User {
     apellidos: string;
     estatura: number;
     peso: number;
-    roles: Role;
-}
-
-export enum Role {
-    USER = 'ROL_USER',
-    ADMIN = 'ROL_ADMIN',
-    ENTRENADOR = 'ROL_ENTRENADOR',
-}
-
-//Comprobar entidad DTO back
+    roles: Set<Rol>;
+  }

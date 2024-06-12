@@ -12,6 +12,7 @@ gymbuddy\app\error\exception\ExcepcionCampoVacio.class
 gymbuddy\app\entities\Usuario.class
 gymbuddy\app\serviceImpl\JwtServiceImpl.class
 gymbuddy\app\dto\response\error\DetailsResponse.class
+gymbuddy\app\dto\EntrenamientoDTO.class
 gymbuddy\app\dto\EjercicioDTO.class
 gymbuddy\app\repository\UserRepository.class
 gymbuddy\app\serviceImpl\EntrenamientoServiceImpl.class
@@ -24,7 +25,6 @@ gymbuddy\app\entities\Entrenamiento.class
 gymbuddy\app\service\StorageService.class
 gymbuddy\app\dto\request\SigninRequest.class
 gymbuddy\app\controller\EjercicioController.class
-gymbuddy\app\controller\MediaController.class
 gymbuddy\app\serviceImpl\FileSystemStorageService.class
 gymbuddy\app\serviceImpl\UsuarioServiceImpl.class
 gymbuddy\app\dto\response\user\JwtAuthenticationResponse.class

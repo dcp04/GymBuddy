@@ -15,46 +15,46 @@ export class TokenService {
   constructor() {}
 
   /**
-   * Retrieves the JWT token from session storage.
+   * Retrieves the JWT token from local storage.
    *
    * @returns {string | null} The JWT token or null if not found.
    * @memberof TokenService
    */
   getToken(): string | null {
-    return sessionStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   /**
-   * Stores the JWT token and user roles in session storage.
+   * Stores the JWT token and user roles in local storage.
    *
    * @param {string} token The JWT token.
    * @param {string[]} roles The user roles.
    * @memberof TokenService
    */
   setUserDetails(token: string, roles: string[]): void {
-    sessionStorage.setItem('token', token);
-    sessionStorage.setItem('roles', JSON.stringify(roles));
+    localStorage.setItem('token', token);
+    localStorage.setItem('roles', JSON.stringify(roles));
   }
 
   /**
-   * Retrieves the user roles from session storage.
+   * Retrieves the user roles from local storage.
    *
    * @returns {string[] | null} The user roles or null if not found.
    * @memberof TokenService
    */
   getRoles(): string[] | null {
-    const roles = sessionStorage.getItem('roles');
+    const roles = localStorage.getItem('roles');
     return roles ? JSON.parse(roles) : null;
   }
 
   /**
-   * Removes the JWT token and user roles from session storage.
+   * Removes the JWT token and user roles from local storage.
    *
    * @memberof TokenService
    */
   removeUserDetails(): void {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('roles');
+    localStorage.removeItem('token');
+    localStorage.removeItem('roles');
   }
 
   /**

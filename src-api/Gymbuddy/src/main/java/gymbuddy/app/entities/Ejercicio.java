@@ -1,12 +1,17 @@
 package gymbuddy.app.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -22,10 +27,8 @@ public class Ejercicio {
     private String nombre;
     private String descripcion;
 
-     @ManyToOne
-    @JoinColumn(name = "entrenamiento_id")
-    @JsonBackReference
-    private Entrenamiento entrenamiento;
+    @ManyToMany(mappedBy = "ejercicios", fetch = FetchType.EAGER)
+    private List<Entrenamiento> entrenamiento = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "creador_id")
@@ -57,11 +60,11 @@ public class Ejercicio {
         this.descripcion = descripcion;
     }
 
-    public Entrenamiento getEntrenamiento() {
+    public List<Entrenamiento> getEntrenamiento() {
         return entrenamiento;
     }
 
-    public void setEntrenamiento(Entrenamiento entrenamiento) {
+    public void setEntrenamiento(List<Entrenamiento> entrenamiento) {
         this.entrenamiento = entrenamiento;
     }
 

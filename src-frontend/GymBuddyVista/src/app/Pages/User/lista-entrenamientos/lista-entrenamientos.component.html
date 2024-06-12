@@ -1,12 +1,99 @@
 <app-header type="admin"></app-header>
 
-<div class="max-w-5xl mx-auto p-8 bg-white rounded-lg shadow-md" *ngIf="entrenamiento">
-  <h1 class="text-3xl font-bold mb-4">{{ entrenamiento.nombre }}</h1>
+<div
+  class="max-w-5xl mx-auto p-8 bg-white rounded-lg shadow-md"
+  *ngIf="entrenamiento"
+>
+  <div class="delete">
+    <h1 class="text-3xl font-bold mb-4">{{ entrenamiento.nombre }}</h1>
+    <app-buttons
+      class="text-black"
+      (click)="modalDelete(entrenamiento.id)"
+      btnStyle="primaryt"
+      class="text-white"
+      id="deleteButton"
+      data-modal-target="deleteModal"
+      data-modal-toggle="deleteModal"
+      type="button"
+    >
+      Delete
+    </app-buttons>
+    <div
+      id="deleteModal"
+      [ngClass]="{
+        hidden: !isMenuDeleteOpen,
+        block: isMenuDeleteOpen
+      }"
+      tabindex="-1"
+      aria-hidden="true"
+      class="flex items-center justify-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%)] max-h-full bg-opacity-20 bg-gray-500"
+    >
+      <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow">
+          <div
+            class="flex items-center justify-center p-4 md:p-5 border-b rounded-t"
+          >
+            <h2 class="text-xl text-gray-900 mt-3">
+              Eliminar entrenamiento con nombre {{ entrenamiento.nombre }}
+            </h2>
+            <button
+              (click)="modalDelete(null)"
+              type="button"
+              class="text-gray-700 bg-transparent rounded-lg text-sm w-8 h-8 ms-auto"
+              data-modal-hide="deleteModal"
+            >
+              <svg
+                class="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <div class="p-4 md:p-5">
+            <p class="mb-4 text-gray-500">
+              ¿Estás seguro de que quieres eliminar a
+              {{ entrenamiento.nombre }}?
+            </p>
+            <div class="flex justify-center items-center space-x-4">
+              <app-buttons
+                btnStyle="primaryt"
+                type="button"
+                (click)="deleteEntrenamiento(entrenamientoDelete)"
+                class="text-white"
+                >Sí, estoy seguro</app-buttons
+              >
+              <app-buttons
+                btnStyle="secondaryt"
+                type="button"
+                (click)="modalDelete(null)"
+                class="hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm font-medium px-5 py-2.5"
+                >No, cancelar</app-buttons
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <h2 class="text-xl font-semibold mb-2">Dificultad</h2>
   <span class="text-gray-500">{{ entrenamiento.dificultad }}</span>
-  
+
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div *ngFor="let ejercicio of ejercicios" class="border rounded-lg p-6 text-center bg-gray-50 shadow">
+    <div
+      *ngFor="let ejercicio of ejercicios"
+      class="border rounded-lg p-6 text-center bg-gray-50 shadow"
+    >
       <h3 class="text-lg font-semibold mb-4">{{ ejercicio.nombre }}</h3>
       <img
         [src]="ejercicio.imagenUrl"

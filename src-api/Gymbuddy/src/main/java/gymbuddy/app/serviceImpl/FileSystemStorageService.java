@@ -38,15 +38,11 @@ public class FileSystemStorageService implements StorageService {
             if (file.isEmpty()) {
                 throw new RuntimeException("Failed to store empty file.");
             }
-
-            String filename = file.getOriginalFilename();
-            Path destinationFile = rootLocation.resolve(Paths.get(filename))
+            Path destinationFile = this.rootLocation.resolve(
+                    Paths.get(file.getOriginalFilename()))
                     .normalize().toAbsolutePath();
-
-            try (InputStream inputStream = file.getInputStream()) {
-                Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
-            }
-            return filename;
+            Files.copy(file.getInputStream(), destinationFile, StandardCopyOption.REPLACE_EXISTING);
+            return destinationFile.getFileName().toString();
         } catch (IOException e) {
             throw new RuntimeException("Failed to store file.", e);
         }
@@ -56,15 +52,14 @@ public class FileSystemStorageService implements StorageService {
     public Resource loadAsResource(String filename) {
         try {
             Path file = rootLocation.resolve(filename);
-            Resource resource = new UrlResource((file.toUri()));
-
+            Resource resource = new UrlResource(file.toUri());
             if (resource.exists() || resource.isReadable()) {
                 return resource;
             } else {
-                throw new RuntimeException("Couldn´t read filename: " + filename);
+                throw new RuntimeException("Could not read file: " + filename);
             }
         } catch (MalformedURLException e) {
-            throw new RuntimeException("Couldn´t read filename: " + filename);
+            throw new RuntimeException("Could not read file: " + filename, e);
         }
     }
 }

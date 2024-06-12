@@ -30,10 +30,10 @@ export class HeaderComponent {
     window.location.reload();
   }
   ngOnInit() {
-    if (sessionStorage.getItem('roles') === '["ROL_ADMIN"]') {
+    if (localStorage.getItem('roles') === '["ROL_ADMIN"]') {
       this.type = 'admin'
     }
-    if (sessionStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
       this.login = true;
     }
     const roles = this.tokenService.getRoles();
