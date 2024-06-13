@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import gymbuddy.app.entities.Usuario;
+import gymbuddy.app.error.exception.UserNotFoundException;
+import gymbuddy.app.repository.UserRepository;
 import gymbuddy.app.service.UsuarioService;
 
 @RestController
@@ -24,6 +26,9 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private UserRepository usuarioRepositorio;
+
     @GetMapping
     public ResponseEntity<List<Usuario>> getAllUsuarios() {
         List<Usuario> usuarios = usuarioService.getAllUsuarios();
@@ -32,12 +37,10 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> getUsuarioById(@PathVariable("id") Long id) {
-        Usuario usuario = usuarioService.getUsuarioById(id);
-        if (usuario != null) {
-            return new ResponseEntity<>(usuario, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        Usuario usuario = usuarioRepositorio.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+
+        return ResponseEntity.ok(usuario);
     }
 
     @GetMapping("/email/{email}")

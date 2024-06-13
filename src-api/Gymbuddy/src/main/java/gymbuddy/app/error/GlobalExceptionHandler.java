@@ -15,7 +15,10 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import gymbuddy.app.dto.response.error.ErrorDetailsResponse;
 import gymbuddy.app.error.exception.ExcepcionCampoVacio;
-import gymbuddy.app.error.exception.MangaNotFoundException;
+import gymbuddy.app.error.exception.EjercicioNotFoundException;
+import gymbuddy.app.error.exception.EntrenamientoNotFoundException;
+import gymbuddy.app.error.exception.UserNotFoundException;
+
 
 /**
  * Manejador global de excepciones para el manejo centralizado de errores.
@@ -38,8 +41,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(MangaNotFoundException.class)
-    public ResponseEntity<ErrorDetailsResponse> handleLibroNotFoundException(MangaNotFoundException ex,
+    @ExceptionHandler(EjercicioNotFoundException.class)
+    public ResponseEntity<ErrorDetailsResponse> handleEjercicioNotFoundException(EjercicioNotFoundException ex,
             WebRequest request) {
         ErrorDetailsResponse errorDetails = new ErrorDetailsResponse(new Date(), ex.getMessage(),
                 request.getDescription(false));
@@ -47,6 +50,24 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(EntrenamientoNotFoundException.class)
+    public ResponseEntity<ErrorDetailsResponse> handleEntrenamientoNotFoundException(EntrenamientoNotFoundException ex,
+            WebRequest request) {
+        ErrorDetailsResponse errorDetails = new ErrorDetailsResponse(new Date(), ex.getMessage(),
+                request.getDescription(false));
+
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorDetailsResponse> handleUserNotFoundException(UserNotFoundException ex,
+            WebRequest request) {
+        ErrorDetailsResponse errorDetails = new ErrorDetailsResponse(new Date(), ex.getMessage(),
+                request.getDescription(false));
+
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+    
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ErrorDetailsResponse> handleNoHandlerFoundException(NoHandlerFoundException ex,
             WebRequest request) {

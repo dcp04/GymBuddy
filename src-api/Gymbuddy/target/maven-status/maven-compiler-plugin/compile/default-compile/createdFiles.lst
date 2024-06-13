@@ -18,7 +18,7 @@ gymbuddy\app\repository\UserRepository.class
 gymbuddy\app\serviceImpl\EntrenamientoServiceImpl.class
 gymbuddy\app\dto\request\SignUpRequest.class
 gymbuddy\app\config\SecurityConfiguration.class
-gymbuddy\app\error\exception\MangaNotFoundException.class
+gymbuddy\app\error\exception\EjercicioNotFoundException.class
 gymbuddy\app\config\JwtAuthenticationFilter.class
 gymbuddy\app\repository\EntrenamientoRepository.class
 gymbuddy\app\entities\Entrenamiento.class

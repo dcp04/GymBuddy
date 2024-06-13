@@ -26,6 +26,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import gymbuddy.app.error.exception.EjercicioNotFoundException;
 
 @RestController
 @RequestMapping
@@ -57,7 +58,7 @@ public class EjercicioController {
     @GetMapping("/api/ejercicios/{id}")
     public EjercicioDTO getEjercicioById(@PathVariable Long id) {
         Ejercicio ejercicio = ejercicioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Ejercicio not found"));
+                .orElseThrow(() -> new EjercicioNotFoundException("Ejercicio not found"));
         return convertToDTO(ejercicio);
     }
 

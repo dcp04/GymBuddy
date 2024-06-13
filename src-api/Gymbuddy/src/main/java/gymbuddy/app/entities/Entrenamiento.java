@@ -22,6 +22,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -32,6 +34,8 @@ public class Entrenamiento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El campo no puede estar en blanco")
+    @Size(max = 50, message = "El nombre solo puede tener 50 caracteres")
     private String nombre;
 
     @Enumerated(EnumType.STRING)
@@ -41,16 +45,12 @@ public class Entrenamiento {
     @JoinColumn(name = "creador_id")
     private Usuario creador;
 
-
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "ejercicio_entrenamiento",
-        joinColumns = @JoinColumn(name = "entrenamiento_id"),
-        inverseJoinColumns = @JoinColumn(name = "ejercicio_id")
-    )
+    @JoinTable(name = "ejercicio_entrenamiento", joinColumns = @JoinColumn(name = "entrenamiento_id"), inverseJoinColumns = @JoinColumn(name = "ejercicio_id"))
     @JsonBackReference
     private List<Ejercicio> ejercicios = new ArrayList<>();
 
+    @NotBlank(message = "El campo no puede estar en blanco")
     private String imagenUrl;
 
     public Long getId() {

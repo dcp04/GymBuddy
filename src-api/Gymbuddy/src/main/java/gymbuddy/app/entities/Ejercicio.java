@@ -3,8 +3,6 @@ package gymbuddy.app.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +12,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -24,7 +24,12 @@ public class Ejercicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El campo no puede estar en blanco")
+    @Size(max = 50, message = "El nombre solo puede tener 50 caracteres")
     private String nombre;
+
+    @NotBlank(message = "El campo no puede estar en blanco")
+    @Size(max = 500, message = "La descripción solo puede tener 500 caracteres")
     private String descripcion;
 
     @ManyToMany(mappedBy = "ejercicios", fetch = FetchType.EAGER)
@@ -34,6 +39,7 @@ public class Ejercicio {
     @JoinColumn(name = "creador_id")
     private Usuario creador;
 
+    @NotBlank(message = "El campo no puede estar en blanco")
     private String imagenUrl;
 
     public Long getId() {

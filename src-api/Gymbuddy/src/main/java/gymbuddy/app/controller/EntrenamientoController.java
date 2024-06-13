@@ -26,6 +26,7 @@ import gymbuddy.app.entities.Dificultad;
 import gymbuddy.app.entities.Ejercicio;
 import gymbuddy.app.entities.Entrenamiento;
 import gymbuddy.app.entities.Usuario;
+import gymbuddy.app.error.exception.EntrenamientoNotFoundException;
 import gymbuddy.app.repository.EntrenamientoRepository;
 import gymbuddy.app.service.EjercicioService;
 import gymbuddy.app.service.EntrenamientoService;
@@ -65,7 +66,9 @@ public class EntrenamientoController {
 
     @GetMapping("/api/entrenamientos/{id}")
     public ResponseEntity<Entrenamiento> obtenerEntrenamientoPorId(@PathVariable(value = "id") Long entrenamientoId) {
-        Entrenamiento entrenamiento = entrenamientoService.obtenerEntrenamientoPorId(entrenamientoId);
+        Entrenamiento entrenamiento = entrenamientoRepository.findById(entrenamientoId)
+                .orElseThrow(() -> new EntrenamientoNotFoundException("Ejercicio not found"));
+
         return ResponseEntity.ok(entrenamiento);
     }
 
@@ -89,7 +92,6 @@ public class EntrenamientoController {
         }
 
         Usuario creador = usuarioService.getUsuarioById(creadorId);
-        // .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         List<Ejercicio> ejercicios =
         ejercicioService.getAllEjerciciosById(ejerciciosIds);
 

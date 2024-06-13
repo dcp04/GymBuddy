@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * Excepción lanzada cuando no se encuentra una reserva.
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class ReservaNotFoundException extends RuntimeException {
+public class EntrenamientoNotFoundException extends RuntimeException {
 
     /**
-     * Construye una nueva ReservaNotFoundException con el mensaje de error especificado.
+     * Construye una nueva EntrenamientoNotFoundException con el mensaje de error especificado.
      *
      * @param mensaje El mensaje de error.
      */
-    public ReservaNotFoundException(String mensaje) {
+    public EntrenamientoNotFoundException(String mensaje) {
         super(mensaje);
     }
 
     /**
-     * Construye una nueva ReservaNotFoundException con el mensaje de error y la causa especificados.
+     * Construye una nueva EntrenamientoNotFoundException con el mensaje de error y la causa especificados.
      *
      * @param mensaje El mensaje de error.
      * @param causa   La causa de la excepción.
      */
-    public ReservaNotFoundException(String mensaje, Throwable causa) {
+    public EntrenamientoNotFoundException(String mensaje, Throwable causa) {
         super(mensaje, causa);
     }
 }
