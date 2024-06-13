@@ -23,6 +23,7 @@ C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbu
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\dto\response\error\ErrorDetailsResponse.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\controller\UsuarioController.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\entities\Rol.java
+C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\error\exception\EntrenamientoNotFoundException.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\dto\response\error\DetailsResponse.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\dto\request\SignUpRequest.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\entities\Ejercicio.java
@@ -33,7 +34,6 @@ C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbu
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\config\WebConfig.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\serviceImpl\FileSystemStorageService.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\GymBuddyApplication.java
-C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\error\exception\ReservaNotFoundException.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\serviceImpl\EjercicioServiceImpl.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\serviceImpl\JwtServiceImpl.java
 C:\Users\davic\OneDrive\Documentos\GymBuddy\src-api\Gymbuddy\src\main\java\gymbuddy\app\config\JwtAuthenticationFilter.java

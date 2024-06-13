@@ -53,6 +53,11 @@ public class Entrenamiento {
     @NotBlank(message = "El campo no puede estar en blanco")
     private String imagenUrl;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_entrenamiento", joinColumns = @JoinColumn(name = "entrenamiento_id"), inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+    @JsonBackReference
+    private List<Usuario> usuariosApuntados = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
@@ -91,5 +96,13 @@ public class Entrenamiento {
 
     public void setEjercicios(List<Ejercicio> ejercicios) {
         this.ejercicios = ejercicios;
+    }
+
+    public List<Usuario> getUsuariosApuntados() {
+        return usuariosApuntados;
+    }
+
+    public void setUsuariosApuntados(List<Usuario> usuariosApuntados) {
+        this.usuariosApuntados = usuariosApuntados;
     }
 }

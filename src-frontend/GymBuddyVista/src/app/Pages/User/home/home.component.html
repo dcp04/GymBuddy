@@ -32,6 +32,20 @@
         class="text-white"
         >Más Información</app-buttons
       >
+      <app-buttons
+      btnStyle="primaryt"
+      *ngIf="user && !apuntados[entrenamiento.id]"
+      (click)="apuntarse(entrenamiento.id)"
+      class="text-white ms-8"
+      >Apuntarse</app-buttons
+    >
+    <app-buttons
+      btnStyle="secondaryt"
+      *ngIf="user && apuntados[entrenamiento.id]"
+      (click)="desapuntarse(entrenamiento.id)"
+      class="text-white ms-8"
+      >Desapuntarse</app-buttons
+    >
     </div>
   </div>
 </div>

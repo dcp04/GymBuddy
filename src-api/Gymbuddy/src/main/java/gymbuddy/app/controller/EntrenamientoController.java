@@ -10,6 +10,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -92,8 +93,7 @@ public class EntrenamientoController {
         }
 
         Usuario creador = usuarioService.getUsuarioById(creadorId);
-        List<Ejercicio> ejercicios =
-        ejercicioService.getAllEjerciciosById(ejerciciosIds);
+        List<Ejercicio> ejercicios = ejercicioService.getAllEjerciciosById(ejerciciosIds);
 
         Entrenamiento nuevoEntrenamiento = new Entrenamiento();
         nuevoEntrenamiento.setNombre(nombre);
@@ -105,6 +105,75 @@ public class EntrenamientoController {
 
         Entrenamiento entrenamientoCreado = entrenamientoService.crearEntrenamiento(nuevoEntrenamiento);
         return ResponseEntity.status(HttpStatus.CREATED).body(entrenamientoCreado);
+    }
+
+    @PostMapping("/api/entrenamientos/{entrenamientoId}/apuntarse")
+    public ResponseEntity<?> apuntarseAEntrenamiento(
+            @PathVariable Long entrenamientoId,
+            @RequestParam Long usuarioId) {
+        Usuario usuario = usuarioService.getUsuarioById(usuarioId);
+        Entrenamiento entrenamiento = entrenamientoService.obtenerEntrenamientoPorId(entrenamientoId);
+
+        if (usuario == null || entrenamiento == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario o Entrenamiento no encontrado");
+        }
+
+        List<Usuario> usuariosApuntados = entrenamiento.getUsuariosApuntados();
+        if (!usuariosApuntados.contains(usuario)) {
+            usuariosApuntados.add(usuario);
+            entrenamiento.setUsuariosApuntados(usuariosApuntados);
+            entrenamientoService.updateEntrenamiento(entrenamiento);
+            return ResponseEntity.ok("Usuario apuntado al entrenamiento con éxito");
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya está apuntado a este entrenamiento");
+        }
+    }
+
+    @PostMapping("/api/entrenamientos/{entrenamientoId}/desapuntarse")
+    public ResponseEntity<?> desapuntarseDeEntrenamiento(
+            @PathVariable Long entrenamientoId,
+            @RequestParam Long usuarioId) {
+        Usuario usuario = usuarioService.getUsuarioById(usuarioId);
+        Entrenamiento entrenamiento = entrenamientoService.obtenerEntrenamientoPorId(entrenamientoId);
+
+        if (usuario == null || entrenamiento == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario o Entrenamiento no encontrado");
+        }
+
+        List<Usuario> usuariosApuntados = entrenamiento.getUsuariosApuntados();
+        if (usuariosApuntados.contains(usuario)) {
+            usuariosApuntados.remove(usuario);
+            entrenamiento.setUsuariosApuntados(usuariosApuntados);
+            entrenamientoService.updateEntrenamiento(entrenamiento);
+            return ResponseEntity.ok("Usuario desapuntado del entrenamiento con éxito");
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario no está apuntado a este entrenamiento");
+        }
+    }
+
+    @GetMapping("/api/entrenamientos/{entrenamientoId}/isApuntado")
+    public ResponseEntity<?> isUsuarioApuntado(
+            @PathVariable Long entrenamientoId,
+            @RequestParam Long usuarioId) {
+        Entrenamiento entrenamiento = entrenamientoService.obtenerEntrenamientoPorId(entrenamientoId);
+        Usuario usuario = usuarioService.getUsuarioById(usuarioId);
+
+        if (entrenamiento == null || usuario == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario o Entrenamiento no encontrado");
+        }
+
+        boolean isApuntado = entrenamiento.getUsuariosApuntados().contains(usuario);
+        return ResponseEntity.ok(isApuntado);
+    }
+
+    @GetMapping("/api/entrenamientos/usuario/{usuarioId}")
+    public ResponseEntity<List<Entrenamiento>> getEntrenamientosByUsuario(@PathVariable Long usuarioId) {
+        Usuario usuario = usuarioService.getUsuarioById(usuarioId);
+        if (usuario == null) {
+            return ResponseEntity.notFound().build();
+        }
+        List<Entrenamiento> entrenamientos = entrenamientoService.getEntrenamientosByUsuario(usuario);
+        return ResponseEntity.ok(entrenamientos);
     }
 
     @PutMapping("/api/entrenamientos/{id}")

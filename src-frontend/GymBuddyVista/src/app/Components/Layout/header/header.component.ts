@@ -21,6 +21,7 @@ export class HeaderComponent {
   type = ''
   login: boolean = false;
   isMenuOpen: boolean = false;
+  user: boolean = false;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -35,6 +36,9 @@ export class HeaderComponent {
     }
     if (localStorage.getItem('token')) {
       this.login = true;
+    }
+    if (localStorage.getItem('roles') === '["ROL_USER"]') {
+      this.user = true;
     }
     const roles = this.tokenService.getRoles();
     this.route.params.subscribe((params) => {

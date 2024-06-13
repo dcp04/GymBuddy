@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<div class="title border-b-2 border-black mx-8 my-8 pt-5">
+  <h1 class="text-2xl font-bold">Entrenamientos</h1>
+  <app-buttons
+    *ngIf="type"
+    btnStyle="primaryt"
+    [routerLink]="['/nuevo_entrenamiento']"
+    class="text-white"
+    >Nuevo</app-buttons
+  >
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 mx-8">
+  <div
+    *ngFor="let entrenamiento of entrenamientos"
+    class="border rounded-lg p-6 text-center bg-gray-50 shadow"
+  >
+    <h3 class="text-lg font-semibold mb-4">{{ entrenamiento.nombre }}</h3>
+    <img
+      [src]="entrenamiento.imagenUrl"
+      alt="Entrenamiento {{ entrenamiento.nombre }}"
+      class="mx-auto mb-4 h-50 w-50 object-cover"
+    />
+    <p class="text-base mb-4">
+      <strong>Dificultad:</strong> {{ entrenamiento.dificultad }}
+    </p>
+    <div class="flex items-center justify-center flex-wrap">
+      <app-buttons
+        btnStyle="blurt"
+        [routerLink]="['/entrenamientos', entrenamiento.id]"
+        class="text-white"
+        >Más Información</app-buttons
+      >
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

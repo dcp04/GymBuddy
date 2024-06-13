@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import gymbuddy.app.entities.Entrenamiento;
+import gymbuddy.app.entities.Usuario;
 import gymbuddy.app.repository.EntrenamientoRepository;
 import gymbuddy.app.service.EntrenamientoService;
 import jakarta.persistence.EntityNotFoundException;
@@ -52,6 +53,16 @@ public class EntrenamientoServiceImpl implements EntrenamientoService {
                 .orElseThrow(() -> new EntityNotFoundException("Entrenamiento no encontrado con ID: " + id));
 
         entrenamientoRepository.delete(entrenamiento);
+    }
+
+    @Override
+    public Entrenamiento updateEntrenamiento(Entrenamiento entrenamiento) {
+        return entrenamientoRepository.save(entrenamiento);
+    }
+
+    @Override
+    public List<Entrenamiento> getEntrenamientosByUsuario(Usuario usuario) {
+        return entrenamientoRepository.findByUsuariosApuntadosContaining(usuario);
     }
 
 }

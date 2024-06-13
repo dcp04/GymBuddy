@@ -49,12 +49,29 @@
           >
         </li>
         <li>
-          <app-buttons *ngIf="login" btnStyle="blurt" class="text-white" (click)="logout()"
+          <app-buttons
+            *ngIf="user"
+            btnStyle="primaryt"
+            class="text-white"
+            [routerLink]="'/entrenamientosApuntados'"
+            >Entrenamientos Apuntados</app-buttons
+          >
+        </li>
+        <li>
+          <app-buttons
+            *ngIf="login"
+            btnStyle="blurt"
+            class="text-white"
+            (click)="logout()"
             >Logout</app-buttons
           >
         </li>
         <li>
-          <app-buttons *ngIf="!login" btnStyle="blurt" class="text-white" [routerLink]="'/login'"
+          <app-buttons
+            *ngIf="!login"
+            btnStyle="blurt"
+            class="text-white"
+            [routerLink]="'/login'"
             >Login</app-buttons
           >
         </li>

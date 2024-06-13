@@ -1,7 +1,9 @@
 package gymbuddy.app.entities;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,10 +24,12 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import java.util.Objects;
 
 /**
  * Representa un usuario en el sistema.
@@ -89,6 +93,9 @@ public class Usuario implements UserDetails {
     @CollectionTable(name = "usuario_rol")
     @Column(name = "RolesUsuario")
     private Set<Rol> roles = new HashSet<>();
+
+    @ManyToMany(mappedBy = "usuariosApuntados", fetch = FetchType.EAGER)
+    private List<Entrenamiento> entrenamiento = new ArrayList<>();
 
     @Transactional
     @Override
@@ -192,5 +199,27 @@ public class Usuario implements UserDetails {
 
     public void setPeso(Double peso) {
         this.peso = peso;
+    }
+
+    public List<Entrenamiento> getEntrenamiento() {
+        return entrenamiento;
+    }
+
+    public void setEntrenamiento(List<Entrenamiento> entrenamiento) {
+        this.entrenamiento = entrenamiento;
+    }
+
+     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(id, usuario.id) &&
+               Objects.equals(nombre, usuario.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre);
     }
 }

@@ -18,7 +18,6 @@ gymbuddy\app\repository\UserRepository.class
 gymbuddy\app\serviceImpl\EntrenamientoServiceImpl.class
 gymbuddy\app\dto\request\SignUpRequest.class
 gymbuddy\app\config\SecurityConfiguration.class
-gymbuddy\app\error\exception\EjercicioNotFoundException.class
 gymbuddy\app\config\JwtAuthenticationFilter.class
 gymbuddy\app\repository\EntrenamientoRepository.class
 gymbuddy\app\entities\Entrenamiento.class
@@ -33,14 +32,15 @@ gymbuddy\app\config\WebConfig.class
 gymbuddy\app\service\EntrenamientoService.class
 gymbuddy\app\serviceImpl\UserServiceImpl$1.class
 gymbuddy\app\service\UserService.class
+gymbuddy\app\error\exception\EjercicioNotFoundException.class
 gymbuddy\app\controller\AuthenticationController.class
 gymbuddy\app\service\UsuarioService.class
 gymbuddy\app\entities\Dificultad.class
 gymbuddy\app\error\GlobalExceptionHandler.class
 gymbuddy\app\service\JwtService.class
 gymbuddy\app\controller\EntrenamientoController.class
+gymbuddy\app\error\exception\EntrenamientoNotFoundException.class
 gymbuddy\app\entities\Rol.class
-gymbuddy\app\error\exception\ReservaNotFoundException.class
 gymbuddy\app\serviceImpl\UserServiceImpl.class
 gymbuddy\app\config\InitializationData.class
 gymbuddy\app\GymBuddyApplication.class

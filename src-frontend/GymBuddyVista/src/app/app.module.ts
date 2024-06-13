@@ -17,6 +17,7 @@ import { NuevoEntrenamientoComponent } from './Pages/Admin/nuevo-entrenamiento/n
 import { NuevoEjercicioComponent } from './Pages/Admin/nuevo-ejercicio/nuevo-ejercicio.component';
 import { ListaUsuarioComponent } from './Pages/Admin/lista-usuario/lista-usuario.component';
 import { AuthInterceptor } from './Interceptors/AuthInterceptor';
+import { EntrenamientosApuntadoComponent } from './Pages/User/entrenamientos-apuntado/entrenamientos-apuntado.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthInterceptor } from './Interceptors/AuthInterceptor';
     NuevoEntrenamientoComponent,
     NuevoEjercicioComponent,
     ListaUsuarioComponent,
+    EntrenamientosApuntadoComponent,
   ],
   imports: [
     BrowserModule,

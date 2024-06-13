@@ -3,6 +3,7 @@ package gymbuddy.app.service;
 import java.util.List;
 
 import gymbuddy.app.entities.Entrenamiento;
+import gymbuddy.app.entities.Usuario;
 import jakarta.persistence.EntityNotFoundException;
 
 public interface EntrenamientoService {
@@ -48,4 +49,8 @@ public interface EntrenamientoService {
      * @throws EntityNotFoundException Si no se encuentra el entrenamiento a eliminar.
      */
     void eliminarEntrenamiento(Long id);
+
+    Entrenamiento updateEntrenamiento(Entrenamiento entrenamiento);
+
+    List<Entrenamiento> getEntrenamientosByUsuario(Usuario usuario);
 }
