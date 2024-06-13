@@ -29,7 +29,7 @@ export class ListaUsuarioComponent implements OnInit {
   ) {
     this.formUser = this.fb.group({
       id: [''],
-      email: [''],
+      email: ['', Validators.email],
       nombre: [
         '',
         [
@@ -46,7 +46,18 @@ export class ListaUsuarioComponent implements OnInit {
           Validators.maxLength(25),
         ],
       ],
-      roles: ['', Validators.required],
+      estatura: [
+        '',
+        [
+          Validators.required,
+        ],
+      ],
+      peso: [
+        '',
+        [
+          Validators.required,
+        ],
+      ],
     });
   }
 
@@ -73,7 +84,8 @@ export class ListaUsuarioComponent implements OnInit {
         email: data.email,
         nombre: data.nombre,
         apellidos: data.apellidos,
-        roles: data.roles,
+        estatura: data.estatura,
+        peso: data.peso,
       });
       this.isMenuOpen = true;
     });
@@ -90,7 +102,8 @@ export class ListaUsuarioComponent implements OnInit {
         ...this.usertoUpdate,
         nombre: this.formUser.value.nombre,
         apellidos: this.formUser.value.apellidos,
-        roles: this.formUser.value.roles,
+        estatura: this.formUser.value.estatura,
+        peso: this.formUser.value.peso,
       };
       this.usuarioService.updateUsuario(id, userData).subscribe(() => {
         this.loadUsers();

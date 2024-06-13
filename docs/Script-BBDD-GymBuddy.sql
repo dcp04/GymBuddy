@@ -48,17 +48,6 @@ CREATE TABLE ejercicio_entrenamiento (
     FOREIGN KEY (ejercicio_id) REFERENCES ejercicio(id)
 );
 
--- Insertar datos en las tablas
-INSERT INTO usuario (nombre, apellidos, email, password, estatura, peso) VALUES
-('Javier', 'Pintado', 'javier.pintado@gmail.com', 'javier1234', 177, 77.0),
-('David', 'Castro Portero', 'david.castro@gmail.com', 'david1234', 175, 70.0),
-('Abel', 'Garcia Sanchez', 'abel.garcia@gmail.com', 'abel1234', 183, 80.0);
-
--- Insertar roles de usuarios
-INSERT INTO usuario_rol (usuario_id, roles_usuario) VALUES
-((SELECT id FROM usuario WHERE email = 'javier.pintado@gmail.com'), 'ROL_ENTRENADOR'),
-((SELECT id FROM usuario WHERE email = 'david.castro@gmail.com'), 'ROL_ADMIN'),
-((SELECT id FROM usuario WHERE email = 'abel.garcia@gmail.com'), 'ROL_USER');
 
 -- Insertar ejercicios
 INSERT INTO ejercicio (nombre, descripcion, imagen_url, creador_id) VALUES

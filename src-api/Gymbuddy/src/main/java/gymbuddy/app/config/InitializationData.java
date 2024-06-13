@@ -84,7 +84,7 @@ public class InitializationData implements CommandLineRunner {
             ejercicio1.setDescripcion(
                     "El press de banca es un ejercicio de levantamiento de pesas que se centra en el desarrollo de los músculos pectorales mayores, los tríceps y los deltoides anteriores.");
             ejercicio1.setCreador(usuario2);
-            ejercicio1.setImagenUrl("../../../../../../mediafiles/PressBancaBarra.png");
+            ejercicio1.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/ejercicios/PressBancaBarra.png");
             ejercicioRepository.save(ejercicio1);
 
             Ejercicio ejercicio2 = new Ejercicio();
@@ -92,7 +92,7 @@ public class InitializationData implements CommandLineRunner {
             ejercicio2.setDescripcion(
                     "La sentadilla es un ejercicio de entrenamiento de fuerza que trabaja los músculos de las piernas, incluyendo los cuádriceps, los isquiotibiales y los glúteos.");
             ejercicio2.setCreador(usuario1);
-            ejercicio2.setImagenUrl("../../../../../../mediafiles/Sentadilla.png");
+            ejercicio2.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/ejercicios/Sentadilla.png");
             ejercicioRepository.save(ejercicio2);
 
             Ejercicio ejercicio3 = new Ejercicio();
@@ -100,7 +100,7 @@ public class InitializationData implements CommandLineRunner {
             ejercicio3.setDescripcion(
                     "El peso muerto es un ejercicio de levantamiento de pesas que se centra en el desarrollo de los músculos de la espalda baja, los glúteos y los isquiotibiales.");
             ejercicio3.setCreador(usuario1);
-            ejercicio3.setImagenUrl("../../../../../../mediafiles/PesoMuerto.png");
+            ejercicio3.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/ejercicios/PesoMuerto.png");
             ejercicioRepository.save(ejercicio3);
 
             Ejercicio ejercicio4 = new Ejercicio();
@@ -108,7 +108,7 @@ public class InitializationData implements CommandLineRunner {
             ejercicio4.setDescripcion(
                     "El press militar es un ejercicio de levantamiento de pesas que se enfoca en el desarrollo de los músculos deltoides y los tríceps.");
             ejercicio4.setCreador(usuario1);
-            ejercicio4.setImagenUrl("../../../../../../mediafiles/PressHombro.png");
+            ejercicio4.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/ejercicios/PressHombro.png");
             ejercicioRepository.save(ejercicio4);
 
             Ejercicio ejercicio5 = new Ejercicio();
@@ -116,7 +116,7 @@ public class InitializationData implements CommandLineRunner {
             ejercicio5.setDescripcion(
                     "Las flexiones son un ejercicio de peso corporal que trabaja los músculos del pecho, los tríceps y los hombros.");
             ejercicio5.setCreador(usuario2);
-            ejercicio5.setImagenUrl("../../../../../../mediafiles/Flexiones.png");
+            ejercicio5.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/ejercicios/Flexiones.png");
             ejercicioRepository.save(ejercicio5);
 
             Ejercicio ejercicio6 = new Ejercicio();
@@ -124,7 +124,7 @@ public class InitializationData implements CommandLineRunner {
             ejercicio6.setDescripcion(
                     "La plancha es un ejercicio isométrico que se centra en el fortalecimiento del núcleo, incluyendo los músculos abdominales y la espalda baja.");
             ejercicio6.setCreador(usuario2);
-            ejercicio6.setImagenUrl("../../../../../../mediafiles/Plancha.png");
+            ejercicio6.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/ejercicios/Plancha.png");
             ejercicioRepository.save(ejercicio6);
 
             Entrenamiento entrenamiento1 = new Entrenamiento();
@@ -134,7 +134,7 @@ public class InitializationData implements CommandLineRunner {
             entrenamiento1.getEjercicios().add(ejercicio1);
             entrenamiento1.getEjercicios().add(ejercicio2);
             entrenamiento1.getEjercicios().add(ejercicio3);
-            entrenamiento1.setImagenUrl("../../../../../../mediafiles/EntrenamientoFuerza.png");
+            entrenamiento1.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/entrenamientos/entrenamientoFuerza.jpeg");
             entrenamientoRepository.save(entrenamiento1);
 
             Entrenamiento entrenamiento2 = new Entrenamiento();
@@ -144,7 +144,7 @@ public class InitializationData implements CommandLineRunner {
             entrenamiento2.getEjercicios().add(ejercicio4); 
             entrenamiento2.getEjercicios().add(ejercicio5); 
             entrenamiento2.getEjercicios().add(ejercicio6); 
-            entrenamiento2.setImagenUrl("../../../../../../mediafiles/EntrenamientoResistencia.png");
+            entrenamiento2.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/entrenamientos/entrenamientoResistencia.jpeg");
             entrenamientoRepository.save(entrenamiento2);
 
             } catch (Exception e) {

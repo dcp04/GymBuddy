@@ -115,7 +115,7 @@
                         <div
                           class="d-flex flex-col align-items-start text-left"
                         >
-                          <label for="nombre" class="ms-1 mb-2">Nombre:</label>
+                          <label for="nombre" class="ms-1 mb-2 label">Nombre:</label>
                           <input
                             formControlName="nombre"
                             id="nombre"
@@ -129,7 +129,7 @@
                               formUser.get('nombre')?.hasError('required') &&
                               formUser.get('nombre')?.touched
                             "
-                            class="text-red-500 text-xs mt-1 mb-2"
+                            class="text-red-500 text-xs mt-1 mb-2 label"
                             >Campo obligatorio</span
                           >
                           <span
@@ -137,7 +137,7 @@
                               formUser.get('nombre')?.hasError('pattern') &&
                               formUser.get('nombre')?.touched
                             "
-                            class="text-red-500 text-xs mt-1"
+                            class="text-red-500 text-xs mt-1 label"
                             >El nombre no puede contener caracteres
                             extraños</span
                           >
@@ -149,7 +149,7 @@
                             class="text-red-500 text-xs mt-1"
                             >El nombre es demasiado largo</span
                           >
-                          <label for="apellidos" class="ms-1 mb-2"
+                          <label for="apellidos" class="ms-1 mb-2 label"
                             >Apellidos:</label
                           >
                           <input
@@ -165,7 +165,7 @@
                               formUser.get('apellidos')?.hasError('required') &&
                               formUser.get('apellidos')?.touched
                             "
-                            class="text-red-500 text-xs mt-1 mb-2"
+                            class="text-red-500 text-xs mt-1 mb-2 label"
                             >Campo obligatorio</span
                           >
                           <span
@@ -173,7 +173,7 @@
                               formUser.get('apellidos')?.hasError('pattern') &&
                               formUser.get('apellidos')?.touched
                             "
-                            class="text-red-500 text-xs mt-1"
+                            class="text-red-500 text-xs mt-1 label"
                             >Los apellidos no pueden contener caracteres
                             extraños</span
                           >
@@ -184,26 +184,45 @@
                                 ?.hasError('maxLength') &&
                               formUser.get('apellidos')?.touched
                             "
-                            class="text-red-500 text-xs mt-1"
+                            class="text-red-500 text-xs mt-1 label"
                             >Los apellidos son demasiado largos</span
                           >
-                          <label for="roles" class="ms-1 mb-2">Roles:</label>
-                          <select
-                            formControlName="roles"
-                            id="roles"
-                            class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mr-2 mb-3 sm:mb-0"
-                            required
+                          <label for="estatura" class="ms-1 mb-2 label"
+                            >Estatura:</label
                           >
-                            <option *ngFor="let role of roles" [value]="role">
-                              {{ role }}
-                            </option>
-                          </select>
+                          <input
+                            formControlName="estatura"
+                            id="estatura"
+                            class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mr-2 mb-3 sm:mb-0"
+                            type="number"
+                            placeholder="Estatura"
+                            required
+                          />
                           <span
                             *ngIf="
-                              formUser.get('roles')?.hasError('required') &&
-                              formUser.get('roles')?.touched
+                              formUser.get('estatura')?.hasError('required') &&
+                              formUser.get('estatura')?.touched
                             "
-                            class="text-red-500 text-xs mt-1 mb-2"
+                            class="text-red-500 text-xs mt-1 mb-2 label"
+                            >Campo obligatorio</span
+                          >
+                          <label for="peso" class="ms-1 mb-2 label"
+                            >Peso:</label
+                          >
+                          <input
+                            formControlName="peso"
+                            id="peso"
+                            class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mr-2 mb-3 sm:mb-0"
+                            type="number"
+                            placeholder="Peso"
+                            required
+                          />
+                          <span
+                            *ngIf="
+                              formUser.get('peso')?.hasError('required') &&
+                              formUser.get('peso')?.touched
+                            "
+                            class="text-red-500 text-xs mt-1 mb-2 label"
                             >Campo obligatorio</span
                           >
                         </div>

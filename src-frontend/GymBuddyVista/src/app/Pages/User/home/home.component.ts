@@ -12,12 +12,16 @@ import { EntrenamientoService } from 'src/app/Services/EntrenamientoService/entr
 export class HomeComponent implements OnInit {
   ejercicios: Ejercicios[] = [];
   entrenamientos: Entrenamientos[] = [];
+  type: string = '';
 
   constructor(private ejercicioService: EjerciciosService, private entrenamientoService: EntrenamientoService) {}
 
   ngOnInit() {
     this.showEjercicios();
     this.showEntrenamientos();
+    if (localStorage.getItem('roles') === '["ROL_ADMIN"]' || localStorage.getItem('roles') === '["ROL_ENTRENADOR"]') {
+      this.type = 'admin'
+    }
   }
 
   showEjercicios() {

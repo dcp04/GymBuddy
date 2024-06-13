@@ -13,6 +13,7 @@ export class ListaEjerciciosComponent {
   id: number = 0;
   ejercicioDelete: number | null = null;
   isMenuDeleteOpen: boolean = false;
+  type:string ='';
 
   constructor(
     private ejercicioService: EjerciciosService,
@@ -25,6 +26,9 @@ export class ListaEjerciciosComponent {
       this.id = params['id'];
       this.showEjercicios(this.id);
     });
+    if (localStorage.getItem('roles') === '["ROL_ADMIN"]' || localStorage.getItem('roles') === '["ROL_ENTRENADOR"]') {
+      this.type = 'admin'
+    }
   }
 
   showEjercicios(id: number) {

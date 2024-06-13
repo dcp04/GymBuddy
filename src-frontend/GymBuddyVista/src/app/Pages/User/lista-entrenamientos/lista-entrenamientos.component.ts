@@ -15,7 +15,8 @@ export class ListaEntrenamientosComponent implements OnInit {
   id: number = 0;
   entrenamientoDelete: number | null = null;
   isMenuDeleteOpen: boolean = false;
-
+  type: string = '';
+  
   constructor(
     private entrenamientoService: EntrenamientoService,
     private route: Router,
@@ -28,6 +29,10 @@ export class ListaEntrenamientosComponent implements OnInit {
       this.showEntrenamiento(this.id);
       this.showEjerciciosDeEntrenamiento();
     });
+    if (localStorage.getItem('roles') === '["ROL_ADMIN"]' || localStorage.getItem('roles') === '["ROL_ENTRENADOR"]') {
+      this.type = 'admin'
+    }
+
   }
 
   showEntrenamiento(id: number) {

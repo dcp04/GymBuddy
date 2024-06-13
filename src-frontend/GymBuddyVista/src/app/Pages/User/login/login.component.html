@@ -30,7 +30,7 @@
               <div
                 class="leading-none px-2 inline-block text-lg text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2"
               >
-                Log with your credentials
+                Inicia Sesión con tus credenciales
               </div>
             </div>
 
@@ -50,19 +50,29 @@
                   FormUser.get('email')?.hasError('required') &&
                   FormUser.get('email')?.touched
                 "
+                class="text-red-500 text-xs mt-1 mb 2"
                 >Campo obligatorio</span
+              >
+              <span
+                *ngIf="
+                  FormUser.get('email')?.hasError('email') &&
+                  FormUser.get('email')?.touched
+                "
+                class="text-red-500 text-xs mt-1"
+                >El email debe de contener formato de email</span
               >
               <input
                 formControlName="password"
                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-5000 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                 type="password"
-                placeholder="Password"
+                placeholder="Contraseña"
               />
               <span
                 *ngIf="
                   FormUser.get('password')?.hasError('required') &&
                   FormUser.get('password')?.touched
                 "
+                class="text-red-500 text-xs mt-1 mb 2"
                 >Campo obligatorio</span
               >
               <button
@@ -80,11 +90,13 @@
                   <circle cx="8.5" cy="7" r="4" />
                   <path d="M20 8v6M23 11h-6" />
                 </svg>
-                <span class="ml-2">Sign In</span>
+                <span class="ml-2">Iniciar Sesión</span>
               </button>
               <div class="privacidad">
                 <span class="mt-6 mt-2 text-xs text-gray-600 text-center">
-                  Estoy de acuerdo <br> con la política de <br> Privacidad de GymBuddy
+                  Estoy de acuerdo <br />
+                  con la política de <br />
+                  Privacidad de GymBuddy
                 </span>
                 <a
                   class="mt-6 mt-2 text-xs text-gray-600 text-center"

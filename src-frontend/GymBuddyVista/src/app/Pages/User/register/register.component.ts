@@ -30,7 +30,7 @@ export class RegisterComponent {
       apellidos: ['', [Validators.required, Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s-]+$/), Validators.maxLength(25)]],  
       password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/)]],
       secondPassword: ['', Validators.required],
-      estatura: ['', [Validators.required, Validators.min(1)]],
+      estatura: ['', [Validators.required,]],
       peso: ['', [Validators.required]],
     }, { 
       validator: this.passwordMatchValidator 
