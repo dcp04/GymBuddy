@@ -1,18 +1,39 @@
 package gymbuddy.app.dto.request;
 
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 /**
  * Clase que representa la solicitud de registro de usuario.
  */
 public class SignUpRequest {
-    private String nombre; // Nombre del usuario
-    private String apellidos; // Apellido del usuario
-    private String email; // Correo electrónico del usuario
+    @NotBlank(message = "El campo nombre no puede estar en blanco")
+    @Size(max = 50, message = "El nombre solo puede tener 50 caracteres")
+    private String nombre;
+
+    @NotBlank(message = "El campo apellidos no puede estar en blanco")
+    @Size(max = 50, message = "Los apellidos solo pueden tener 50 caracteres")
+    private String apellidos;
+
+    @Column(unique = true)
+    @NotBlank(message = "El campo email no puede estar en blanco")
+    @Email(message = "El email debe tener formato de email")
+    private String email;
+
+    @Min(value = 1, message = "La estatura debe ser mayor que 0")
     private int estatura;
+
+    @Min(value = 1, message = "El peso debe ser mayor o igual a 1")
     private Double peso;
-    private String password; // Contraseña del usuario
+
+    private String password;
 
     /**
      * Método getter para obtener el nombre del usuario.
+     * 
      * @return String El nombre del usuario.
      */
     public String getNombre() {
@@ -21,30 +42,34 @@ public class SignUpRequest {
 
     /**
      * Método setter para establecer el nombre del usuario.
+     * 
      * @param firstName El nombre a establecer.
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * Método getter para obtener el apellidos del usuario.
-     * @return String El apellidos del usuario.
+  /**
+     * Método getter para obtener los apellidos del usuario.
+     * 
+     * @return String Los apellidos del usuario.
      */
-    public String getApellido() {
+    public String getApellidos() {
         return apellidos;
     }
 
     /**
      * Método setter para establecer el apellidos del usuario.
-     * @param lastName El apellidos a establecer.
+     * 
+     * @param apellidos El apellidos a establecer.
      */
-    public void setApellido(String apellidos) {
+    public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
     /**
      * Método getter para obtener el correo electrónico del usuario.
+     * 
      * @return String El correo electrónico del usuario.
      */
     public String getEmail() {
@@ -53,6 +78,7 @@ public class SignUpRequest {
 
     /**
      * Método setter para establecer el correo electrónico del usuario.
+     * 
      * @param email El correo electrónico a establecer.
      */
     public void setEmail(String email) {
@@ -61,6 +87,7 @@ public class SignUpRequest {
 
     /**
      * Método getter para obtener el correo electrónico del usuario.
+     * 
      * @return String El correo electrónico del usuario.
      */
     public int getEstatura() {
@@ -69,6 +96,7 @@ public class SignUpRequest {
 
     /**
      * Método setter para establecer el correo electrónico del usuario.
+     * 
      * @param email El correo electrónico a establecer.
      */
     public void setEstatura(int estatura) {
@@ -77,6 +105,7 @@ public class SignUpRequest {
 
     /**
      * Método getter para obtener el correo electrónico del usuario.
+     * 
      * @return String El correo electrónico del usuario.
      */
     public Double getPeso() {
@@ -85,6 +114,7 @@ public class SignUpRequest {
 
     /**
      * Método setter para establecer el correo electrónico del usuario.
+     * 
      * @param email El correo electrónico a establecer.
      */
     public void setPeso(Double peso) {
@@ -93,6 +123,7 @@ public class SignUpRequest {
 
     /**
      * Método getter para obtener la contraseña del usuario.
+     * 
      * @return String La contraseña del usuario.
      */
     public String getPassword() {
@@ -101,6 +132,7 @@ public class SignUpRequest {
 
     /**
      * Método setter para establecer la contraseña del usuario.
+     * 
      * @param password La contraseña a establecer.
      */
     public void setPassword(String password) {

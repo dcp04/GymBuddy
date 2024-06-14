@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * Excepción lanzada cuando no se encuentra una reserva.
+ * Excepción lanzada cuando no se encuentra una entrenamiento.
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class EntrenamientoNotFoundException extends RuntimeException {

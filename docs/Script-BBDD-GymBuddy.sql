@@ -48,6 +48,15 @@ CREATE TABLE ejercicio_entrenamiento (
     FOREIGN KEY (ejercicio_id) REFERENCES ejercicio(id)
 );
 
+CREATE TABLE usuario_entrenamiento (
+    entrenamiento_id BIGINT,
+    usuario_id BIGINT,
+    PRIMARY KEY (entrenamiento_id, usuario_id),
+    FOREIGN KEY (entrenamiento_id) REFERENCES entrenamiento(id),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
+
+
 
 -- Insertar ejercicios
 INSERT INTO ejercicio (nombre, descripcion, imagen_url, creador_id) VALUES

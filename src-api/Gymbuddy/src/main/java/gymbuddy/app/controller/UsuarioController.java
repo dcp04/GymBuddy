@@ -54,7 +54,6 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("ROL_ADMIN")
     public ResponseEntity<Usuario> actualizarUsuario(
             @PathVariable(value = "id") Long usuarioId,
             @RequestBody Usuario usuarioDetails) {

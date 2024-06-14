@@ -1,7 +1,7 @@
 package gymbuddy.app.error.exception;
 
 /**
- * Excepción lanzada cuando no se encuentra un manga.
+ * Excepción lanzada cuando no se encuentra un ejercicio.
  */
 public class EjercicioNotFoundException extends RuntimeException {
     /**

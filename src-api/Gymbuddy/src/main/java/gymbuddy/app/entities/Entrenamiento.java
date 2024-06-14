@@ -3,16 +3,14 @@ package gymbuddy.app.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,7 +18,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -29,6 +26,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "entrenamiento")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Entrenamiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +53,6 @@ public class Entrenamiento {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_entrenamiento", joinColumns = @JoinColumn(name = "entrenamiento_id"), inverseJoinColumns = @JoinColumn(name = "usuario_id"))
-    @JsonBackReference
     private List<Usuario> usuariosApuntados = new ArrayList<>();
 
     public Long getId() {
