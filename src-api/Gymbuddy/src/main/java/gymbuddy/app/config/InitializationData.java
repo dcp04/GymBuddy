@@ -127,15 +127,19 @@ public class InitializationData implements CommandLineRunner {
             ejercicio6.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/ejercicios/Plancha.png");
             ejercicioRepository.save(ejercicio6);
 
-            Entrenamiento entrenamiento1 = new Entrenamiento();
-            entrenamiento1.setNombre("Entrenamiento De Fuerza");
-            entrenamiento1.setDificultad(Dificultad.MODERADO);
-            entrenamiento1.setCreador(usuario2);
-            entrenamiento1.getEjercicios().add(ejercicio1);
-            entrenamiento1.getEjercicios().add(ejercicio2);
-            entrenamiento1.getEjercicios().add(ejercicio3);
-            entrenamiento1.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/entrenamientos/entrenamientoFuerza.jpeg");
-            entrenamientoRepository.save(entrenamiento1);
+            Entrenamiento entrenamiento3 = new Entrenamiento();
+            entrenamiento3.setNombre("Entrenamiento Explosivo");
+            entrenamiento3.setDificultad(Dificultad.DIFICIL);
+            entrenamiento3.setCreador(usuario1);
+            entrenamiento3.getEjercicios().add(ejercicio1);
+            entrenamiento3.getEjercicios().add(ejercicio2);
+            entrenamiento3.getEjercicios().add(ejercicio3);
+            entrenamiento3.getEjercicios().add(ejercicio4); 
+            entrenamiento3.getEjercicios().add(ejercicio5); 
+            entrenamiento3.getEjercicios().add(ejercicio6); 
+            entrenamiento3.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/entrenamientos/entrenamientoExplosivo.jpeg");
+            entrenamientoRepository.save(entrenamiento3);
+            
 
             Entrenamiento entrenamiento2 = new Entrenamiento();
             entrenamiento2.setNombre("Entrenamiento de Resistencia");
@@ -146,6 +150,16 @@ public class InitializationData implements CommandLineRunner {
             entrenamiento2.getEjercicios().add(ejercicio6); 
             entrenamiento2.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/entrenamientos/entrenamientoResistencia.jpeg");
             entrenamientoRepository.save(entrenamiento2);
+
+            Entrenamiento entrenamiento1 = new Entrenamiento();
+            entrenamiento1.setNombre("Entrenamiento De Fuerza");
+            entrenamiento1.setDificultad(Dificultad.MODERADO);
+            entrenamiento1.setCreador(usuario2);
+            entrenamiento1.getEjercicios().add(ejercicio1);
+            entrenamiento1.getEjercicios().add(ejercicio2);
+            entrenamiento1.getEjercicios().add(ejercicio3);
+            entrenamiento1.setImagenUrl("http://gymbuddy.us-east-1.elasticbeanstalk.com/media/entrenamientos/entrenamientoFuerza.jpeg");
+            entrenamientoRepository.save(entrenamiento1);
 
             } catch (Exception e) {
             // Manejar cualquier error que pueda ocurrir al guardar los usuarios

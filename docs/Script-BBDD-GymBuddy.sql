@@ -69,8 +69,9 @@ INSERT INTO ejercicio (nombre, descripcion, imagen_url, creador_id) VALUES
 
 -- Insertar entrenamientos
 INSERT INTO entrenamiento (nombre, dificultad, imagen_url, creador_id) VALUES
-('Entrenamiento De Fuerza', 'MODERADO', '../../../../../../mediafiles/EntrenamientoFuerza.png', (SELECT id FROM usuario WHERE email = 'david.castro@gmail.com')),
-('Entrenamiento de Resistencia', 'FACIL', '../../../../../../mediafiles/EntrenamientoResistencia.png', (SELECT id FROM usuario WHERE email = 'david.castro@gmail.com'));
+('Entrenamiento De Fuerza', 'MODERADO', 'http://gymbuddy.us-east-1.elasticbeanstalk.com/media/entrenamientos/entrenamientoFuerza.jpeg', (SELECT id FROM usuario WHERE email = 'david.castro@gmail.com')),
+('Entrenamiento de Resistencia', 'FACIL', 'http://gymbuddy.us-east-1.elasticbeanstalk.com/media/entrenamientos/entrenamientoResistencia.jpeg', (SELECT id FROM usuario WHERE email = 'david.castro@gmail.com'));
+('Entrenamiento Explosivo', 'DIFICIL', 'http://gymbuddy.us-east-1.elasticbeanstalk.com/media/entrenamientos/entrenamientoExplosivo.jpeg', (SELECT id FROM usuario WHERE email = 'david.castro@gmail.com')),
 
 -- Insertar relaciones entre ejercicios y entrenamientos
 INSERT INTO ejercicio_entrenamiento (entrenamiento_id, ejercicio_id) VALUES

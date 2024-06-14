@@ -31,8 +31,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.showEjercicios();
-    this.showEntrenamientos();
     if (
       localStorage.getItem('roles') === '["ROL_ADMIN"]' ||
       localStorage.getItem('roles') === '["ROL_ENTRENADOR"]'
@@ -50,6 +48,8 @@ export class HomeComponent implements OnInit {
           this.userService.getUsuarioByEmail(this.email).subscribe({
             next: (res) => {
               this.usuario = res;
+              this.showEjercicios();
+              this.showEntrenamientos();
             },
             error: (err) => {
               console.log('Error al obtener los datos del usuario:', err);
@@ -63,6 +63,8 @@ export class HomeComponent implements OnInit {
         });
       }
     }
+    this.showEjercicios();
+    this.showEntrenamientos();
   }
 
   showEjercicios() {
